@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+   <head>
+      <title>GPIO Control</title>
+      <link type="text/css" rel="stylesheet" href="/static/styles.css" id="stylespicker" title="Styles" />
+      <link type="text/css" rel="alternate stylesheet" href="/static/room1styles.css" id="room1stylespicker" title="Room 1" />
+      <link type="text/css" rel="alternate stylesheet" href="/static/room2styles.css" id="room2stylespicker" title="Room 2" />
+      <link type="text/css" rel="alternate stylesheet" href="/static/room3styles.css" id="room3stylespicker" title="Room 3" />
+	  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="/static/jquery.js"></script>-->
+   </head>
+   <body class="grid">
+      <div class="left-column">
+         <img src="/static/images/logo.png" class="logo">
+         <div class="status">
+            <button class="room" id="room1styles" onclick="room1function()"> 
+               <div class="roomtitle">Room 1</div>
+               <div class="roomsensor">
+               {% if  room1light   == 1 %} 
+               <img src="/static/images/lighton.png" class="utilityroomsensor">
+               {% else %} 
+               <img src="/static/images/lightoff.png" class="utilityroomsensor">
+               {% endif %}
+               
+               {% if  room1fan == 1 %} 
+               <img src="/static/images/fanon.png" class="utilityroomsensor">
+               {% else %} 
+               <img src="/static/images/fanoff.png" class="utilityroomsensor">
+               {% endif %}
+               
+               {% if  room1aircon == 1 %} 
+               <img src="/static/images/airconon.png" class="utilityroomsensor">
+               {% else %} 
+               <img src="/static/images/airconoff.png" class="utilityroomsensor">
+               {% endif %}
+   
+               </div>
+            </button>
+            
+            <button class="room" id="room2styles" onclick="room2function()">
+               <div class="roomtitle">Room 2</div>
+               <div class="roomsensor">
+               {% if  room2light   == 1 %} 
+               <img src="/static/images/lighton.png" class="utilityroomsensor">
+               {% else %} 
+               <img src="/static/images/lightoff.png" class="utilityroomsensor">
+               {% endif %}
+               
+               {% if  room2fan == 1 %} 
+               <img src="/static/images/fanon.png" class="utilityroomsensor">
+               {% else %} 
+               <img src="/static/images/fanoff.png" class="utilityroomsensor">
+               {% endif %}
+               
+               {% if  room2aircon == 1 %} 
+               <img src="/static/images/airconon.png" class="utilityroomsensor">
+               {% else %} 
+               <img src="/static/images/airconoff.png" class="utilityroomsensor">
+               {% endif %}
+               
+               </div>
+            </button>
+            
+            <button class="room" id="room3styles" onclick="room3function()">
+               <div class="roomtitle">Room 3</div>
+               <div class="roomsensor">
+               {% if  room3light   == 1 %} 
+               <img src="/static/images/lighton.png" class="utilityroomsensor">
+               {% else %} 
+               <img src="/static/images/lightoff.png" class="utilityroomsensor">
+               {% endif %}
+               
+               {% if  room3fan == 1 %} 
+               <img src="/static/images/fanon.png" class="utilityroomsensor">
+               {% else %} 
+               <img src="/static/images/fanoff.png" class="utilityroomsensor">
+               {% endif %}
+               
+               {% if  room3aircon == 1 %} 
+               <img src="/static/images/airconon.png" class="utilityroomsensor">
+               {% else %} 
+               <img src="/static/images/airconoff.png" class="utilityroomsensor">
+               {% endif %}
+               
+               </div>
+            </button>
+         </div>
+      </div> 
+      
+      <div class="light room1" style=".room1{display:block;}.room2{display:none;}.room3{display:none;}">
+         <h3>Light</h3>
+            {% if  room1light == 1 %} 
+            <img src="/static/images/lighton.png" class="utility">
+				<div class="onoff">
+            <a href="/room1light/on"class="button" id="room1_light_on_button_on">ON</a> 
+            <a href="/room1light/off" class="button" id="room1_light_off_button_off">OFF</a>  
+            </div>
+            {% else %} 
+            <img src="/static/images/lightoff.png" class="utility">
+				<div class="onoff">
+            <a href="/room1light/on" class="button" id="room1_light_on_button_off">ON</a> 
+				<a href="/room1light/off" class="button" id="room1_light_off_button_on">OFF</a>  
+            </div>
+            {% endif %}
+            <div class="roomnumber">ROOM 1</div>
+      </div>
+      <div class="fan room1" style=".room1{display:block;}.room2{display:none;}.room3{display:none;}">
+         <h3>Fan</h3> 
+            {% if  room1fan   == 1 %} 
+            <img src="/static/images/fanon.png" class="utility">
+			<div class="onoff">
+            <a href="/room1fan/on" class="button" id="room1_fan_on_button_on">ON</a> 
+            <a href="/room1fan/off" class="button" id="room1_fan_off_button_off">OFF</a>  
+            </div>
+            {% else %} 
+            <img src="/static/images/fanoff.png" class="utility">
+				<div class="onoff">
+            <a href="/room1fan/on" class="button" id="room1_fan_on_button_off">ON</a> 
+				<a href="/room1fan/off" class="button" id="room1_fan_off_button_on">OFF</a>  
+            </div>
+            {% endif %}
+      </div>
+      <div class="aircon room1" style=".room1{display:block;}.room2{display:none;}.room3{display:none;}">
+         <h3>Air Conditioner</h3> 
+         {% if  room1aircon   == 1 %} 
+            <img src="/static/images/airconon.png" class="utility">
+				<div class="onoff">
+            <a href="/room1aircon/on" class="button" id="room1_aircon_on_button_on">ON</a> 
+            <a href="/room1aircon/off" class="button" id="room1_aircon_off_button_off">OFF</a>  
+            </div>
+            {% else %} 
+            <img src="/static/images/airconoff.png" class="utility">
+				<div class="onoff">
+            <a href="/room1aircon/on" class="button" id="room1_aircon_on_button_off">ON</a> 
+				<a href="/room1aircon/off" class="button" id="room1_aircon_off_button_on">OFF</a>  
+            </div>
+            {% endif %}
+      </div>
+      
+      
+      <div class="light room2" style=".room1{display:none;}.room2{display:block;}.room3{display:none;}">
+         <h3>Light</h3>
+            {% if  room2light   == 1 %} 
+            <img src="/static/images/lighton.png" class="utility">
+				<div class="onoff">
+            <a href="/room2light/on"class="button" id="room2_light_on_button_on">ON</a> 
+            <a href="/room2light/off" class="button" id="room2_light_off_button_off">OFF</a>  
+            </div>
+            {% else %} 
+            <img src="/static/images/lightoff.png" class="utility">
+				<div class="onoff">
+            <a href="/room2light/on"class="button" id="room2_light_on_button_off">ON</a> 
+				<a href="/room2light/off" class="button" id="room2_light_off_button_on">OFF</a>  
+            </div>
+            {% endif %}
+            <div class="roomnumber">ROOM 2</div>
+      </div>
+      <div class="fan room2" style=".room1{display:none;}.room2{display:block;}.room3{display:none;}">
+         <h3>Fan</h3> 
+            {% if  room2fan   == 1 %} 
+            <img src="/static/images/fanon.png" class="utility">
+				<div class="onoff">
+            <a href="/room2fan/on"class="button" id="room2_fan_on_button_on">ON</a> 
+            <a href="/room2fan/off" class="button" id="room2_fan_off_button_off">OFF</a>  
+            </div>
+            {% else %} 
+            <img src="/static/images/fanoff.png" class="utility">
+				<div class="onoff">
+            <a href="/room2fan/on"class="button" id="room2_fan_on_button_off">ON</a> 
+				<a href="/room2fan/off" class="button" id="room2_fan_off_button_on">OFF</a>  
+            </div>
+            {% endif %}
+      </div>
+      <div class="aircon room2" style=".room1{display:none;}.room2{display:block;}.room3{display:none;}">
+         <h3>Air Conditioner</h3> 
+         {% if  room2aircon   == 1 %} 
+            <img src="/static/images/airconon.png" class="utility">
+				<div class="onoff">
+            <a href="/room2aircon/on"class="button" id="room2_aircon_on_button_on">ON</a> 
+            <a href="/room2aircon/off" class="button" id="room2_aircon_off_button_off">OFF</a>  
+            </div>
+            {% else %} 
+            <img src="/static/images/airconoff.png" class="utility">
+				<div class="onoff">
+            <a href="/room2aircon/on"class="button" id="room2_aircon_on_button_off">ON</a> 
+				<a href="/room2aircon/off" class="button" id="room2_aircon_off_button_on">OFF</a>  
+            </div>
+            {% endif %}
+      </div>
+
+      <div class="light room3" style=".room1{display:none;}.room2{display:none;}.room3{display:block;}">
+         <h3>Light</h3>
+            {% if  room3light   == 1 %} 
+            <img src="/static/images/lighton.png" class="utility">
+				<div class="onoff">
+            <a href="/room3light/on"class="button" id="room3_light_on_button_on">ON</a> 
+            <a href="/room3light/off" class="button" id="room3_light_off_button_off">OFF</a>  
+            </div>
+            {% else %} 
+            <img src="/static/images/lightoff.png" class="utility">
+				<div class="onoff">
+            <a href="/room3light/on"class="button" id="room3_light_on_button_off">ON</a> 
+				<a href="/room3light/off" class="button" id="room3_light_off_button_on">OFF</a>  
+            </div>
+            {% endif %}
+            <div class="roomnumber">ROOM 3</div>
+      </div>
+      <div class="fan room3" style=".room1{display:none;}.room2{display:none;}.room3{display:block;}">
+         <h3>Fan</h3> 
+            {% if  room3fan   == 1 %} 
+            <img src="/static/images/fanon.png" class="utility">
+				<div class="onoff">
+            <a href="/room3fan/on"class="button" id="room3_fan_on_button_on">ON</a> 
+            <a href="/room3fan/off" class="button" id="room3_fan_off_button_off">OFF</a>  
+            </div>
+            {% else %} 
+            <img src="/static/images/fanoff.png" class="utility">
+				<div class="onoff">
+            <a href="/room3fan/on"class="button" id="room3_fan_on_button_off">ON</a> 
+				<a href="/room3fan/off" class="button" id="room3_fan_off_button_on">OFF</a>  
+            </div>
+            {% endif %}
+      </div>
+      <div class="aircon room3" style=".room1{display:none;}.room2{display:none;}.room3{display:block;}">
+         <h3>Air Conditioner</h3> 
+            {% if  room3aircon   == 1 %} 
+            <img src="/static/images/airconon.png" class="utility">
+				<div class="onoff">
+            <a href="/room3aircon/on"class="button" id="room3_aircon_on_button_on">ON</a> 
+            <a href="/room3aircon/off" class="button" id="room3_aircon_off_button_off">OFF</a>  
+            </div>
+            {% else %} 
+            <img src="/static/images/airconoff.png" class="utility">
+				<div class="onoff">
+            <a href="/room3aircon/on"class="button" id="room3_aircon_on_button_off">ON</a> 
+				<a href="/room3aircon/off" class="button" id="room3_aircon_off_button_on">OFF</a>  
+            </div>
+            {% endif %}
+      </div>    
+      
+   </body>
+   <script src="/static/control.js"></script>
+   <!--<script>
+	function changeCSS(sheet){
+			document.getElementById('stylespicker').setAttribute('href',sheet);
+		}
+   </script>-->
+</html>
