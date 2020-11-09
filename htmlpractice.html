@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Practice</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <p>Mode</p>
+            <div class="airconmode">
+               <button value="Auto1">Auto</button>
+               <button value="Cool1">Cool</button>
+               <button value="Fan1">Fan</button>
+            </div>
+            <div class="airconmode">
+                <button value="Auto2">Auto</button>
+                <button value="Cool2">Cool</button>
+                <button value="Fan2">Fan</button>
+             </div>
+             <div class="airconmode">
+                <button value="Auto3">Auto</button>
+                <button value="Cool3">Cool</button>
+                <button value="Fan3">Fan</button>
+             </div>
+        </div>
+        <script>
+
+        $(document).ready(function() {
+        
+        // Get click event, assign button to var, and get values from that var
+        $('.airconmode button').on('click', function() {
+            var thisBtn = $(this);
+            thisBtn.addClass('active').siblings().removeClass('active');
+        
+            var btnValue = thisBtn.val();
+            console.log(btnValue);
+        });
+        
+        // You can use this to set default value
+        // It will fire above click event which will do the updates for you
+        $('#aBtnGroup button[value="M"]').click();
+        });
+        </script>
+    </body>
+</html>

@@ -5,7 +5,7 @@
 body {
   background: #243441;
   overflow-x: hidden;
-  overflow-y: hidden;
+  /*overflow-y: hidden;*/
   text-align: center;
 }
 .grid {
@@ -236,4 +236,200 @@ h3 {
   padding: 25px;
   margin: 40px;
   margin-top: 100px;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+.decincbutton {
+  width: 25%;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  border-radius: 25px;
+  width: 80%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #243441; /* Blue background */
+  outline-style: solid;
+  outline-color: #4f5d67;
+  outline-width: 1px;
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /*Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #0affef; /* Blue background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #0affef; /* Blue background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.aircon room3 {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 33% 33% 33%;
+}
+
+.settemp {
+  grid-column: 1;
+  grid-row: 2;
+  outline-style: solid;
+  outline-width: 0.5;
+  outline-color: #5c5c5c;
+  padding: 10px;
+  margin: 20px;
+  box-shadow: 4px -4px 10px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.settempheader {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.qty {
+  background: #243441;
+  color: #0affef;
+  outline: none;
+  width: 28px;
+  height: 28px;
+  font-size: 25px;
+}
+
+.settempbutton {
+  width: 50%;
+}
+
+.degrees {
+  color: #0affef;
+  font-size: 25px;
+}
+
+/*	grid-column:2;
+	grid-row:1 span 2;
+	display:flex;
+	flex-direction: column;
+	justify-content: space-between; */
+
+.fanspeed {
+  grid-column: 1;
+  grid-row: 3;
+  outline-style: solid;
+  outline-width: 0.5;
+  outline-color: #5c5c5c;
+  padding: 10px;
+  margin: 20px;
+  box-shadow: 4px -4px 10px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.fanspeedimage {
+  width: 85%;
+  cursor: default;
+}
+
+.fanspeedbutton {
+  width: 75%;
+}
+
+.fanspeedbuttonwrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.fanspeedheader {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.airconmode {
+  display: flex;
+  flex-direction: column;
+  background: none;
+}
+
+.airconmodebuttonwrapper {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  outline-style: solid;
+  outline-width: 0.5;
+  outline-color: #5c5c5c;
+  padding: 10px;
+  margin: 20px;
+  box-shadow: 4px -4px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.airconmodebutton {
+  border: none;
+  color: #8a959d;
+  background: none;
+  font-size: 15px;
+  margin: 5px;
+  text-decoration-line: overline;
+  text-decoration-style: solid;
+  text-decoration-color: #5c5c5c;
+  cursor: pointer;
+}
+
+.airconmodeclicked {
+  color: #0affef;
+}
+
+.airconmodeheader {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.onoffwrapper {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+*:focus {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
 }
