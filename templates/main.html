@@ -13,7 +13,7 @@
       <div class="left-column">
          <img src="/static/images/logo.png" class="logo">
          <div class="status">
-            <button class="room" id="room1styles" onclick="room1function()">
+            <button class="room" id="room1styles" onclick="setRoom(1)">
                <div class="roomtitle">Room 1</div>
                <div class="roomsensor">
                {% if  room1light   == 1 %}
@@ -37,7 +37,7 @@
                </div>
             </button>
 
-            <button class="room" id="room2styles" onclick="room2function()">
+            <button class="room" id="room2styles" onclick="setRoom(2)">
                <div class="roomtitle">Room 2</div>
                <div class="roomsensor">
                {% if  room2light   == 1 %}
@@ -61,7 +61,7 @@
                </div>
             </button>
 
-            <button class="room" id="room3styles" onclick="room3function()">
+            <button class="room" id="room3styles" onclick="setRoom(3)">
                <div class="roomtitle">Room 3</div>
                <div class="roomsensor">
                {% if  room3light   == 1 %}

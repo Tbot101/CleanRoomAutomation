@@ -1,97 +1,22 @@
-/* function changeCSS(cssFile, cssLinkIndex) {
+const numRoom = 3;
+let curRoom = 1;
 
-    var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
-
-    var newlink = document.createElement("link");
-    newlink.setAttribute("rel", "stylesheet");
-    newlink.setAttribute("type", "text/css");
-    newlink.setAttribute("href", cssFile);
-
-    document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
-} */
-
-
-function room1function(){
-	var x = document.getElementsByClassName("room1");
-	var i;
-	for (i = 0; i < x.length; i++) {
-	x[i].style.display = "block";
+const setRoom = (roomX) => {
+	let roomHide = document.getElementsByClassName(`room${curRoom}`);
+	let roomShow = document.getElementsByClassName(`room${roomX}`);
+	for (let i of roomHide) {
+		i.style.display = "none";
 	}
-	var y = document.getElementsByClassName("room2");
-	var j;
-	for (j = 0; j < y.length; j++) {
-	y[j].style.display = "none";
+	for (let i of roomShow) {
+		i.style.display = "block";
 	}
-	var z = document.getElementsByClassName("room3");
-	var k;
-	for (k = 0; k < z.length; k++) {
-	z[k].style.display = "none";
-	}
-	const room1button = document.getElementById("room1styles");
-	room1button.style.outline = "1px solid #0AFFEF";
-	const room2button = document.getElementById("room2styles");
-	room2button.style.outline = "none";
-	const room3button = document.getElementById("room3styles");
-	room3button.style.outline = "none";
-	//var value = document.getElementById("room1fanslider").value;
-	document.cookie = "room=room1;path=/;"
-
+	const roomHideBtn = document.getElementById(`room${curRoom}styles`);
+	roomHideBtn.style.outline = "none";
+	const roomShowBtn = document.getElementById(`room${roomX}styles`);
+	roomShowBtn.style.outline = "1px solid #0AFFEF";
+	document.cookie = `room=room${roomX};path=/;`
+	curRoom = roomX;
 }
-
-function room2function(){
-	var x = document.getElementsByClassName("room1");
-	var i;
-	for (i = 0; i < x.length; i++) {
-	x[i].style.display = "none";
-	}
-	var y = document.getElementsByClassName("room2");
-	var j;
-	for (j = 0; j < y.length; j++) {
-	y[j].style.display = "block";
-	}
-	var z = document.getElementsByClassName("room3");
-	var k;
-	for (k = 0; k < z.length; k++) {
-	z[k].style.display = "none";
-	}
-	const room1button = document.getElementById("room1styles");
-	room1button.style.outline = "none";
-	const room2button = document.getElementById("room2styles");
-	room2button.style.outline = "1px solid #0AFFEF";
-	const room3button = document.getElementById("room3styles");
-	room3button.style.outline = "none";
-	//var value = document.getElementById("room2fanslider").value;
-	document.cookie = "room=room2;path=/;"
-
-}
-
-function room3function(){
-	var x = document.getElementsByClassName("room1");
-	var i;
-	for (i = 0; i < x.length; i++) {
-	x[i].style.display = "none";
-	}
-	var y = document.getElementsByClassName("room2");
-	var j;
-	for (j = 0; j < y.length; j++) {
-	y[j].style.display = "none";
-	}
-	var z = document.getElementsByClassName("room3");
-	var k;
-	for (k = 0; k < z.length; k++) {
-	z[k].style.display = "block";
-	}
-	const room1button = document.getElementById("room1styles");
-	room1button.style.outline = "none";
-	const room2button = document.getElementById("room2styles");
-	room2button.style.outline = "none";
-	const room3button = document.getElementById("room3styles");
-	room3button.style.outline = "1px solid #0AFFEF";
-	//var value = document.getElementById("room3fanslider").value;
-	document.cookie = "room=room3;path=/;"
-
-}
-
 
 var condVal = {
 	/*"mode1": "AUTO",
@@ -105,19 +30,10 @@ var condVal = {
 	"fanVal3": "FANLOW"
 };
 
-const roomXfunction = {
-	"room1": room1function,
-	"room2": room2function,
-	"room3": room3function,
-};
 
 const onPageLoad = () => {
 	const url = document.cookie;
-	Object.entries(roomXfunction).forEach(([key, value]) => {
-		if (url.includes(key)) {
-			value();
-		}
-	});
+	setRoom(url.slice(url.length-1));
 };
 onPageLoad();
 
