@@ -81,7 +81,7 @@ def action(deviceName, action):
 
     if action == "on":
         GPIO.output(actuator, GPIO.HIGH)
-    if action == "off":
+    elif action == "off":
         GPIO.output(actuator, GPIO.LOW)
 
     templateData = makeTemplateData()
@@ -97,7 +97,7 @@ def testroom1():
     fans[0].ChangeDutyCycle(float(slider1))
     # Give servo some time to move
     sleep(1)
-
+    templateData = makeTemplateData()
     return render_template('main.html', **templateData)
 
 @app.route("/testroom2", methods=["POST"])
@@ -110,7 +110,7 @@ def testroom2():
     fans[1].ChangeDutyCycle(float(slider2))
     # Give servo some time to move
     sleep(1)
-
+    templateData = makeTemplateData()
     return render_template('main.html', **templateData)
 
 @app.route("/testroom3", methods=["POST"])

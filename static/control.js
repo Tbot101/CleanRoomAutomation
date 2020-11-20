@@ -31,11 +31,15 @@ var condVal = {
 };
 
 
-const onPageLoad = () => {
+// const onPageLoad = () => {
+// 	const url = document.cookie;
+// 	setRoom(url.slice(url.length-1));
+// };
+
+document.addEventListener("DOMContentLoaded", () => {
 	const url = document.cookie;
 	setRoom(url.slice(url.length-1));
-};
-onPageLoad();
+});
 
 function buttonChange(sign, number) {
 	var slider = document.getElementById("room"+number+"fanslider");
@@ -43,16 +47,16 @@ function buttonChange(sign, number) {
 }
 
 function setroomValue(number){
-			var roomvalue = document.getElementById("room"+number+"fanslider").value;
-			localStorage.setItem("room"+number+"_value", roomvalue);
-	}
+		var roomvalue = document.getElementById("room"+number+"fanslider").value;
+		localStorage.setItem("room"+number+"_value", roomvalue);
+}
 
-	function getroomValue(number){
-			if (localStorage.getItem("room"+number+"_value") === null) {// Check if there is selected date.
-						return "0";
-			}
-			return localStorage.getItem("room"+number+"_value");
-	}
+function getroomValue(number){
+		if (localStorage.getItem("room"+number+"_value") === null) {// Check if there is selected date.
+					return "0";
+		}
+		return localStorage.getItem("room"+number+"_value");
+}
 
 /* function fanloop(){
 	var i;
@@ -75,21 +79,6 @@ const airConEdit = (room, dir) => {
 
 
 $(document).ready(function() {
-	// $('.qty-minus').click(function () {
-	// 	var $input = $(this).parent().find('input');
-	// 	var count = parseInt($input.val()) - parseInt(1);
-	// 	count = count < 19 ? 19 : count;
-	// 	$input.val(count);
-	// 	$input.change();
-	// });
-	// $('.qty-plus').click(function () {
-	// 	var $input = $(this).parent().find('input');
-	// 	var count = (parseInt($input.val()) + parseInt(1));
-	// 	count = count > 30 ? 30 : count;
-	// 	$input.val(count);
-	// 	$input.change();
-	// });
-
 		// Get click event, assign button to var, and get values from that var
 	$('.airconmode button').on('click', function() {
 		$('.airconmode button').removeClass('airconmodeclicked')
@@ -102,16 +91,16 @@ $(document).ready(function() {
 });
 
 function settempvalue(number){
-			var tempvalue = document.getElementById("room"+number+"settemp").value;
-			localStorage.setItem("room"+number+"_temp", tempvalue);
-	}
+		var tempvalue = document.getElementById("room"+number+"settemp").value;
+		localStorage.setItem("room"+number+"_temp", tempvalue);
+}
 
-	function gettempvalue(number){
-			if (localStorage.getItem("room"+number+"_temp") === null) {// Check if there is selected date.
-						return "22";
-			}
-			return localStorage.getItem("room"+number+"_temp");
-	}
+function gettempvalue(number){
+		if (localStorage.getItem("room"+number+"_temp") === null) {// Check if there is selected date.
+					return "22";
+		}
+		return localStorage.getItem("room"+number+"_temp");
+}
 document.addEventListener('DOMContentLoaded', function() {
 	/*document.getElementById("room1settemp").value = gettempvalue(1);
 	document.getElementById("room2settemp").value = gettempvalue(2);*/
@@ -181,80 +170,3 @@ $('.airconmode button').on('click', function() {
 	condVal["mode3"] = thisBtn.val();
 	console.log("ON_"+condVal["mode3"]+"_"+condVal["fanVal3"]+"_"+condVal["tempVal3"]);
 });
-
-
-/*
-var roomXfunction = {
-	1: room1function,
-	2: room2function,
-	3: room3function
-};
-
-let onPageLoad = () =>
-{
-	Object.entries(roomXfunction).forEach(([key, value]) => {
-	if (window.location.href.includes(key)) {
-		roomXfunction[value]();
-};
-*/
-
-/*
-let body = document.body;
-
-let room1Btn = document.getElementById('room1sensor');
-let room2Btn = document.getElementById('room2sensor');
-let room3Btn = document.getElementById('room3sensor');
-
-room1Btn.addEventListener('click', () => {
-	body.classList.add('room1');
-	body.classList.remove('room2');
-	body.classList.remove('room3');
-});
-
-room2Btn.addEventListener('click', () => {
-	body.classList.remove('room1');
-	body.classList.add('room2');
-	body.classList.remove('room3');
-});
-
-room3Btn.addEventListener('click', () => {
-	body.classList.remove('room1');
-	body.classList.remove('room2');
-	body.classList.add('room3');
-});
-*/
-/*
-function room1function(){
-    document.getElementsByClassName("room1").style.display = "block";
-    document.getElementsByClassName("room2").style.display = "none";
-    document.getElementsByClassName("room3").style.display = "none";
-}
-room1function()
-
-function room2function(){
-    document.getElementsByClassName("room1").style.display = "none";
-    document.getElementsByClassName("room2").style.display = "block";
-    document.getElementsByClassName("room3").style.display = "none";
-}
-room2function()
-
-function room3function(){
-    document.getElementsByClassName("room1").style.display = "none";
-    document.getElementsByClassName("room2").style.display = "none";
-    document.getElementsByClassName("room3").style.display = "block";
-}
-room3function()
-
-
-document.getElementById("aircon_on_button").onclick = function(){
-	document.getElementById("aircon_on_button").style = '#0AFFEF';
-    document.getElementById("aircon_off_button").style = '#8A959D';
-    document.getElementById("airconimage").src = '/static/images/airconon.png';
-}
-document.getElementById("aircon_off_button").onclick = function(){
-	document.getElementById("aircon_on_button").style = '#8A959D';
-    document.getElementById("aircon_off_button").style = '#E32626';
-    document.getElementById("airconimage").src = '/static/images/airconoff.png';
-}
-
-*/
