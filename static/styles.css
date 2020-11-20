@@ -1,0 +1,461 @@
+:root{
+	--style-block: block;
+	--style-none: none; 
+}
+body {
+	background: #243441;
+	overflow-x: hidden;
+	/*overflow-y: hidden;*/
+	text-align: center;
+}
+.grid{
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-rows: 100%;
+}
+h1{
+	font-family: "Helvetica", sans-serif;
+	color: white;
+	width: 300px;
+}
+h2{
+    color: white;
+    font-family: "Helvetica", sans-serif;
+    font: 15;
+    flex: flex;
+}
+h3{
+	color: white;	
+	width: auto;
+	text-align: center;
+}
+.left-column{
+	grid-column:1;
+	grid-row: 1;
+	/*border: 1px solid;
+	border-color: #707070;*/
+	box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.5)
+}
+.logo{
+	grid-column: 1;
+	width: 60%;
+}
+.status{
+	align-items: center;
+}
+.right-column{
+	grid-column: 2 / span 3;
+	grid-row: 1 / span 2;
+}
+.light{
+	grid-column: 2;
+	grid-row:1;
+}
+.fan{
+	grid-column: 3;
+	grid-row:1;
+}
+.aircon{
+	grid-column: 4;
+	grid-row:1;
+	
+}
+.button{
+	text-decoration: none;
+}
+.onoff{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	outline-style: solid;
+	outline-width: 0.5;
+	outline-color: #5C5C5C;
+	padding: 10px;
+	margin: 20px;
+	/*box-shadow: 4px -4px 10px 5px rgba(0,0,0,0.5);*/
+	box-shadow: -2px 2px 10px 2px #707070, 2px -2px 5px 2px;
+}
+
+.utility{
+	width:50%;
+}
+
+#room1_light_on_button_on{
+	color: #0AFFEF;
+}
+#room1_light_on_button_off{
+	color: #8A959D;
+}
+#room1_light_off_button_on{
+	color: #E32626;
+}
+#room1_light_off_button_off{
+	color: #8A959D;
+}
+#room1_fan_on_button_on{
+	color: #0AFFEF;
+}
+#room1_fan_on_button_off{
+	color: #8A959D;
+}
+#room1_fan_off_button_on{
+	color: #E32626;
+}
+#room1_fan_off_button_off{
+	color: #8A959D;
+}
+#room1_aircon_on_button_on{
+	color: #0AFFEF;
+}
+#room1_aircon_on_button_off{
+	color: #8A959D;
+}
+#room1_aircon_off_button_on{
+	color: #E32626;
+}
+#room1_aircon_off_button_off{
+	color: #8A959D;
+}
+
+#room2_light_on_button_on{
+	color: #0AFFEF;
+}
+#room2_light_on_button_off{
+	color: #8A959D;
+}
+#room2_light_off_button_on{
+	color: #E32626;
+}
+#room2_light_off_button_off{
+	color: #8A959D;
+}
+#room2_fan_on_button_on{
+	color: #0AFFEF;
+}
+#room2_fan_on_button_off{
+	color: #8A959D;
+}
+#room2_fan_off_button_on{
+	color: #E32626;
+}
+#room2_fan_off_button_off{
+	color: #8A959D;
+}
+#room2_aircon_on_button_on{
+	color: #0AFFEF;
+}
+#room2_aircon_on_button_off{
+	color: #8A959D;
+}
+#room2_aircon_off_button_on{
+	color: #E32626;
+}
+#room2_aircon_off_button_off{
+	color: #8A959D;
+}
+
+#room3_light_on_button_on{
+	color: #0AFFEF;
+}
+#room3_light_on_button_off{
+	color: #8A959D;
+}
+#room3_light_off_button_on{
+	color: #E32626;
+}
+#room3_light_off_button_off{
+	color: #8A959D;
+}
+#room3_fan_on_button_on{
+	color: #0AFFEF;
+}
+#room3_fan_on_button_off{
+	color: #8A959D;
+}
+#room3_fan_off_button_on{
+	color: #E32626;
+}
+#room3_fan_off_button_off{
+	color: #8A959D;
+}
+#room3_aircon_on_button_on{
+	color: #0AFFEF;
+}
+#room3_aircon_on_button_off{
+	color: #8A959D;
+}
+#room3_aircon_off_button_on{
+	color: #E32626;
+}
+#room3_aircon_off_button_off{
+	color: #8A959D;
+}
+
+.room{
+	align-items:center;
+}
+.utilityroomsensor{
+	width:25%;
+}
+.roomtitle{
+	color: #8A959D;
+}
+.roomsensor{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: no-wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+.room{
+	outline-style: solid;
+	outline-width: 0.5;
+	outline-color: #5C5C5C; 
+	padding: 7px;
+	margin: 20px;
+	box-shadow: -2px 2px 10px 2px #707070, 2px -2px 5px 2px;	
+	background: #243441;
+	cursor: pointer;
+}
+.room1{
+	display: block;
+}
+.room2{
+	display: none;
+}
+.room3{
+	display: none;
+}
+.status{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+.roomnumber{
+	box-shadow: 2px -2px 20px 2px rgba(0,0,0,0.3);
+	color: #8A959D;
+	padding: 25px;
+	margin: 40px;
+	margin-top: 100px;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+.decincbutton{
+	width:25%;
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  border-radius: 25px;
+  width: 80%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #243441; /* Blue background */
+  outline-style: solid;
+  outline-color: #4F5D67;
+  outline-width: 1px;
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px;  /*Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #0AFFEF; /* Blue background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #0AFFEF; /* Blue background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.airconstats{
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 50% 50%;
+}
+
+
+.settemp{
+	grid-column: 1;
+	grid-row:1;
+	outline-style: solid;
+	outline-width: 0.5;
+	outline-color: #5C5C5C;
+	padding: 10px;
+	margin: 10px;
+	box-shadow: -2px 2px 10px 2px #707070, 2px -2px 5px 2px;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 50% 50%;
+	justify-items: center;
+	align-items: center;
+}
+
+.settempheader{
+	color: #ffffff;
+	font-size: 15px;
+	grid-column: 1;
+	grid-row: 1;
+}
+
+.qty{
+	background:#243441;
+	color: #0AFFEF;
+	border: none;
+	width: 28px;
+	height: 28px;
+	font-size:20px;
+	grid-column: 1;
+	grid-row: 2;
+	margin-right:35px;
+	margin-left:15px;
+}
+
+.qty-plus{
+	grid-column: 2;
+	grid-row: 1;
+}
+
+.qty-minus{
+	grid-column: 2;
+	grid-row: 2 ;
+}
+
+.settempbutton{
+	width: 70%;
+}
+
+
+.degrees{
+	color:#0AFFEF;
+	font-size: 20px;
+	grid-column: 1;
+	grid-row: 2;
+	margin-left: 15px;
+}
+
+/*	grid-column:2;
+	grid-row:1 span 2;
+	display:flex;
+	flex-direction: column;
+	justify-content: space-between; */
+
+.fanspeed{
+	grid-column: 1;
+	grid-row:2;
+	outline-style: solid;
+	outline-width: 0.5;
+	outline-color: #5C5C5C;
+	padding: 10px;
+	margin: 10px;
+	box-shadow: -2px 2px 10px 2px #707070, 2px -2px 5px 2px;
+	display:flex;
+	flex-direction:row;
+	align-items: center;
+}
+
+.fanspeedimage{
+	width: 95%;
+	cursor: default;
+}
+
+.fanspeedbutton{
+	width:85%;
+}
+
+.fanspeedbuttonwrapper{
+	display:flex;
+	flex-direction: column;
+	align-content: space-between;
+}
+
+.fanspeedheader{
+	color: #ffffff;
+	font-size: 15px;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.airconmode{
+	display:flex;
+	flex-direction: column;
+	background: none;
+}
+
+.airconmodebuttonwrapper{
+	grid-column: 2;
+	grid-row:1 / span 2;
+	outline-style: solid;
+	outline-width: 0.5;
+	outline-color: #5C5C5C;
+	padding: 10px;
+	margin: 10px;
+	box-shadow: -2px 2px 10px 2px #707070, 2px -2px 5px 2px;
+}
+
+.airconmodebutton{
+	border: none;
+	color: #8A959D;
+	background: none;
+	font-size:15px;
+	margin: 5px;
+	border-top: 1px solid #5C5C5C;
+	cursor: pointer;
+	margin: 10px 20px 10px 20px;
+	padding-top: 20px;
+}
+
+.airconmodeclicked{
+	color: #0AFFEF;
+}
+
+.airconmodeheader{
+	color: #ffffff;
+	font-size: 15px;
+}
+
+.onoffwrapper{
+	grid-column: 1;
+	grid-row:1;
+}
+
+*:focus{
+	outline: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+}
