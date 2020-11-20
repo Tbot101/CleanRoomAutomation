@@ -5,8 +5,9 @@
       <link type="text/css" rel="alternate stylesheet" href="/static/room1styles.css" id="room1stylespicker" title="Room 1" />
       <link type="text/css" rel="alternate stylesheet" href="/static/room2styles.css" id="room2stylespicker" title="Room 2" />
       <link type="text/css" rel="alternate stylesheet" href="/static/room3styles.css" id="room3stylespicker" title="Room 3" />
-	  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="/static/jquery.js"></script>-->
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!--<script src="/static/jquery.js"></script>-->
+      
    </head>
    <body class="grid">
       <div class="left-column">
@@ -86,7 +87,7 @@
          </div>
       </div> 
       
-      <div class="light room1" style=".room1{display:block;}.room2{display:none;}.room3{display:none;}">
+      <div class="light room1">
          <h3>Light</h3>
             {% if  room1light == 1 %} 
             <img src="/static/images/lighton.png" class="utility">
@@ -103,8 +104,9 @@
             {% endif %}
             <div class="roomnumber">ROOM 1</div>
       </div>
-      <div class="fan room1" style=".room1{display:block;}.room2{display:none;}.room3{display:none;}">
+      <div class="fan room1">
          <h3>Fan</h3> 
+			<div>
             {% if  room1fan   == 1 %} 
             <img src="/static/images/fanon.png" class="utility">
 			<div class="onoff">
@@ -118,8 +120,16 @@
 				<a href="/room1fan/off" class="button" id="room1_fan_off_button_on">OFF</a>  
             </div>
             {% endif %}
+            </div>
+            <div>
+				<form method="POST" action="{{ url_for('testroom1') }}" id="room1fanform" class="slidecontainer" onsubmit="setroomValue(1)">
+				<input type="image" src="/static/images/decrease.png" value="-" onclick="buttonChange(-1, 1)" class="decincbutton"/>
+				<input type="image" src="/static/images/increase.png" value="+" onclick="buttonChange(1, 1)" class="decincbutton"/>
+				<input type="range" min="0" max="100" step="10" value="0" class = "slider" name="Room_1_Fan_Slider" id="room1fanslider"/>
+				</form>	
+            </div>
       </div>
-      <div class="aircon room1" style=".room1{display:block;}.room2{display:none;}.room3{display:none;}">
+      <div class="aircon room1">
          <h3>Air Conditioner</h3> 
          {% if  room1aircon   == 1 %} 
             <img src="/static/images/airconon.png" class="utility">
@@ -137,7 +147,7 @@
       </div>
       
       
-      <div class="light room2" style=".room1{display:none;}.room2{display:block;}.room3{display:none;}">
+      <div class="light room2">
          <h3>Light</h3>
             {% if  room2light   == 1 %} 
             <img src="/static/images/lighton.png" class="utility">
@@ -154,8 +164,9 @@
             {% endif %}
             <div class="roomnumber">ROOM 2</div>
       </div>
-      <div class="fan room2" style=".room1{display:none;}.room2{display:block;}.room3{display:none;}">
+      <div class="fan room2">
          <h3>Fan</h3> 
+			<div>
             {% if  room2fan   == 1 %} 
             <img src="/static/images/fanon.png" class="utility">
 				<div class="onoff">
@@ -169,14 +180,22 @@
 				<a href="/room2fan/off" class="button" id="room2_fan_off_button_on">OFF</a>  
             </div>
             {% endif %}
+            </div>
+            <div>
+				<form method="POST" action="{{ url_for('testroom2') }}" id="room2fanform" class="slidecontainer" onsubmit="setroomValue(2)">
+				<input type="image" src="/static/images/decrease.png" value="-" onclick="buttonChange(-1, 2)" class="decincbutton"/>
+				<input type="image" src="/static/images/increase.png" value="+" onclick="buttonChange(1, 2)" class="decincbutton"/>
+				<input type="range" min="0" max="100" step="10" value="0" class = "slider" name="Room_2_Fan_Slider" id="room2fanslider"/>
+				</form>	
+            </div>
       </div>
-      <div class="aircon room2" style=".room1{display:none;}.room2{display:block;}.room3{display:none;}">
+      <div class="aircon room2">
          <h3>Air Conditioner</h3> 
          {% if  room2aircon   == 1 %} 
             <img src="/static/images/airconon.png" class="utility">
-				<div class="onoff">
-            <a href="/room2aircon/on"class="button" id="room2_aircon_on_button_on">ON</a> 
-            <a href="/room2aircon/off" class="button" id="room2_aircon_off_button_off">OFF</a>  
+			<div class="onoff">
+				<a href="/room2aircon/on"class="button" id="room2_aircon_on_button_on">ON</a> 
+				<a href="/room2aircon/off" class="button" id="room2_aircon_off_button_off">OFF</a>  
             </div>
             {% else %} 
             <img src="/static/images/airconoff.png" class="utility">
@@ -187,7 +206,7 @@
             {% endif %}
       </div>
 
-      <div class="light room3" style=".room1{display:none;}.room2{display:none;}.room3{display:block;}">
+      <div class="light room3">
          <h3>Light</h3>
             {% if  room3light   == 1 %} 
             <img src="/static/images/lighton.png" class="utility">
@@ -204,44 +223,311 @@
             {% endif %}
             <div class="roomnumber">ROOM 3</div>
       </div>
-      <div class="fan room3" style=".room1{display:none;}.room2{display:none;}.room3{display:block;}">
+      <div class="fan room3">
          <h3>Fan</h3> 
-            {% if  room3fan   == 1 %} 
-            <img src="/static/images/fanon.png" class="utility">
+            <div>
+				{% if  room3fan   == 1 %} 
+				<img src="/static/images/fanon.png" class="utility">
 				<div class="onoff">
-            <a href="/room3fan/on"class="button" id="room3_fan_on_button_on">ON</a> 
-            <a href="/room3fan/off" class="button" id="room3_fan_off_button_off">OFF</a>  
-            </div>
-            {% else %} 
-            <img src="/static/images/fanoff.png" class="utility">
-				<div class="onoff">
-            <a href="/room3fan/on"class="button" id="room3_fan_on_button_off">ON</a> 
-				<a href="/room3fan/off" class="button" id="room3_fan_off_button_on">OFF</a>  
-            </div>
-            {% endif %}
+					<a href="/room3fan/on"class="button" id="room3_fan_on_button_on">ON</a> 
+					<a href="/room3fan/off" class="button" id="room3_fan_off_button_off">OFF</a>  
+				</div>
+				{% else %} 
+				<img src="/static/images/fanoff.png" class="utility">
+					<div class="onoff">
+				<a href="/room3fan/on"class="button" id="room3_fan_on_button_off">ON</a> 
+					<a href="/room3fan/off" class="button" id="room3_fan_off_button_on">OFF</a>  
+				</div>
+				{% endif %}
+             </div>
+			<div>
+				<form method="POST" action="{{ url_for('testroom3') }}" id="room3fanform" class="slidecontainer" onsubmit="setroomValue(3)">
+				<input type="image" src="/static/images/decrease.png" value="-" onclick="buttonChange(-1, 3)" class="decincbutton"/>
+				<input type="image" src="/static/images/increase.png" value="+" onclick="buttonChange(1, 3)" class="decincbutton"/>
+				<input type="range" min="0" max="100" step="10" value="0" class = "slider" name="Room_3_Fan_Slider" id="room3fanslider"/>
+				</form>	
+			</div>
       </div>
-      <div class="aircon room3" style=".room1{display:none;}.room2{display:none;}.room3{display:block;}">
+      <div class="aircon room3" >
          <h3>Air Conditioner</h3> 
-            {% if  room3aircon   == 1 %} 
-            <img src="/static/images/airconon.png" class="utility">
+			<div class="onoffwrapper">
+				{% if  room3aircon   == 1 %} 
+				<img src="/static/images/airconon.png" class="utility">
 				<div class="onoff">
-            <a href="/room3aircon/on"class="button" id="room3_aircon_on_button_on">ON</a> 
-            <a href="/room3aircon/off" class="button" id="room3_aircon_off_button_off">OFF</a>  
-            </div>
-            {% else %} 
-            <img src="/static/images/airconoff.png" class="utility">
+					<a href="/room3aircon/on" class="button" id="room3_aircon_on_button_on">ON</a> 
+					<a href="/room3aircon/off" class="button" id="room3_aircon_off_button_off">OFF</a>  
+				</div>
+				<div class="airconstats">
+				<div class="settemp">
+					<p class="settempheader">SET TEMP</p>
+					<input type="number" value="22" minimum="19" maximum="30" class="qty" id="room3settemp">	
+					<p class="degrees">C</p>
+					<input type="image" src="/static/images/increase.png" onclick="settempvalue(3); getairconsignal(3);" class="qty-plus settempbutton">		
+					<input type="image" src="/static/images/decrease.png" onclick="settempvalue(3); getairconsignal(3);" class="qty-minus settempbutton">
+				</div>
+				<div class="fanspeed">
+					<div>
+						<p class="fanspeedheader">FAN SPEED</p>
+						<input type="image" src="/static/images/fanlow.png" class="fanspeedimage" id="fanspeedimageroom3">
+					</div>
+					<div class="fanspeedbuttonwrapper">
+						<input type="image" src="/static/images/increase.png" class="fanspeedbutton" onclick="fanhigh(3); setfanvalue(3); getairconsignal(3)">		
+						<input type="image" src="/static/images/decrease.png" class="fanspeedbutton" onclick="fanlow(3); setfanvalue(3); getairconsignal(3)">
+					</div>
+				</div>
+				<div class="airconmodebuttonwrapper">
+					<p class="airconmodeheader">Mode</p>
+					<div class="airconmode" onclick="getairconsignal(3)">
+					   <button value="AUTO" class="airconmodebutton" id="airconmodebutton31" onclick="setairconvalue(31)">Auto</button>
+					   <button value="COOL" class="airconmodebutton" id="airconmodebutton32" onclick="setairconvalue(32)">Cool</button>
+					   <button value="FAN" class="airconmodebutton" id="airconmodebutton33" onclick="setairconvalue(33)">Fan</button>
+					</div>
+				</div>
+			</div>
+				{% else %} 
+				<img src="/static/images/airconoff.png" class="utility">
 				<div class="onoff">
-            <a href="/room3aircon/on"class="button" id="room3_aircon_on_button_off">ON</a> 
-				<a href="/room3aircon/off" class="button" id="room3_aircon_off_button_on">OFF</a>  
+					<a href="/room3aircon/on"class="button" id="room3_aircon_on_button_off">ON</a> 
+					<a href="/room3aircon/off" class="button" id="room3_aircon_off_button_on">OFF</a>  
+				</div>
+				{% endif %}
             </div>
-            {% endif %}
+            
       </div>    
-      
    </body>
    <script src="/static/control.js"></script>
-   <!--<script>
-	function changeCSS(sheet){
-			document.getElementById('stylespicker').setAttribute('href',sheet);
+
+   <script>
+	   
+	var condVal = {
+		/*"mode1": "AUTO",
+		"tempVal1": 22,
+		"fanVal1": "FANLOW"
+		"mode2": "AUTO",
+		"tempVal2": 22,
+		"fanVal2": "FANLOW"*/
+		"mode3": "AUTO",
+		"tempVal3": 22,
+		"fanVal3": "FANLOW"
+	};
+	   
+	const roomXfunction = {
+		"room1": room1function, 
+		"room2": room2function,
+		"room3": room3function,
+	};
+		
+	const onPageLoad = () => {
+		const url = document.cookie;
+		Object.entries(roomXfunction).forEach(([key, value]) => {
+			if (url.includes(key)) {
+				value();
+			}
+		});
+	};
+	onPageLoad();   
+   
+	function buttonChange(sign, number) {
+		var slider = document.getElementById("room"+number+"fanslider");
+		slider.value = parseInt(slider.value) + parseInt(sign) * 10;
+	}
+	
+	function setroomValue(number){
+        var roomvalue = document.getElementById("room"+number+"fanslider").value;
+        localStorage.setItem("room"+number+"_value", roomvalue); 
+    }
+    
+    function getroomValue(number){
+        if (localStorage.getItem("room"+number+"_value") === null) {// Check if there is selected date. 
+              return "0"; 
+        }
+        return localStorage.getItem("room"+number+"_value");
+    }
+	
+	/* function fanloop(){
+		var i;
+		for (i=0; i < 4; i++){
+			document.getElementById("room"+i+"fanslider").value = getroomValue(i);			
+			};
+		};
+	
+	fanloop(); */
+	document.getElementById("room1fanslider").value = getroomValue(1);
+	document.getElementById("room2fanslider").value = getroomValue(2);
+	document.getElementById("room3fanslider").value = getroomValue(3);
+	
+
+	$(document).ready(function() {
+		$('.qty-minus').click(function () {
+			var $input = $(this).parent().find('input');
+			var count = parseInt($input.val()) - parseInt(1);
+			count = count < 19 ? 19 : count;
+			$input.val(count);
+			$input.change();
+			return false;
+		});
+		$('.qty-plus').click(function () {
+			var $input = $(this).parent().find('input');
+			var count = (parseInt($input.val()) + parseInt(1));
+			count = count > 30 ? 30 : count;
+			$input.val(count);
+			$input.change();
+			return false;
+		});
+			
+			// Get click event, assign button to var, and get values from that var
+		$('.airconmode button').on('click', function() {
+			$('.airconmode button').removeClass('airconmodeclicked')
+				$(this).addClass('airconmodeclicked');
+			
+			var thisBtn = $(this);
+			thisBtn.addClass('active').siblings().removeClass('active');
+			localStorage.setItem("airconmodebutton", $(this).attr('id'));
+		});
+	});
+	
+	function settempvalue(number){
+        var tempvalue = document.getElementById("room"+number+"settemp").value;
+        localStorage.setItem("room"+number+"_temp", tempvalue); 
+    }
+    
+    function gettempvalue(number){
+        if (localStorage.getItem("room"+number+"_temp") === null) {// Check if there is selected date. 
+              return "22"; 
+        }
+        return localStorage.getItem("room"+number+"_temp");
+    }
+	document.addEventListener('DOMContentLoaded', function() {
+		/*document.getElementById("room1settemp").value = gettempvalue(1);
+		document.getElementById("room2settemp").value = gettempvalue(2);*/
+		document.getElementById("room3settemp").value = gettempvalue(3);
+	}, false);
+	
+	
+	function fanlow(number){
+		var fanspeedimages = document.getElementById("fanspeedimageroom"+number)		
+		fanspeedimages.src="/static/images/fanlow.png";
+	};
+	
+	function fanhigh(number){
+		var fanspeedimages = document.getElementById("fanspeedimageroom"+number)
+		fanspeedimages.src="/static/images/fanhigh.png";
+	};
+	
+	function setfanvalue(number){
+        var fansrc = document.getElementById("fanspeedimageroom"+number).src;
+        localStorage.setItem("room"+number+"_fan", fansrc); 
+    }
+    
+    function getfanvalue(number){
+        if (localStorage.getItem("room"+number+"_fan") === null) {// Check if there is selected date. 
+              return "/static/images/fanlow.png"; 
+        }
+        return localStorage.getItem("room"+number+"_fan");
+    }
+	
+	/*document.getElementById("fanspeedimageroom1").src = getfanvalue(1);
+	document.getElementById("fanspeedimageroom2").src = getfanvalue(2);*/
+	document.getElementById("fanspeedimageroom3").src = getfanvalue(3);
+	
+	function setairconvalue(number){
+        var airconsrc = document.getElementById("airconmodebutton"+number);
+		localStorage.setItem("room"+number+"_aircon", airconsrc); 
+		}    
+	 
+    function getairconvalue(){
+        return localStorage.getItem("airconmodebutton");
+    }
+	
+	var localstorageaircon = getairconvalue();
+	document.getElementById(localstorageaircon).classList.add('airconmodeclicked');
+	
+
+	function getairconsignal(number){
+		var temp = document.getElementById("room"+number+"settemp");
+		var tempvalue = temp.value;
+		condVal["tempVal"+number] = tempvalue;
+			
+		var fan = document.getElementById("fanspeedimageroom"+number);
+		var fansrc = fan.src;
+		if (fansrc.includes("fanlow")){
+			var fanvalue = "FANLOW";
 		}
-   </script>-->
+		else{
+			var fanvalue = "FANHIGH";
+		}
+		condVal["fanVal"+number] = fanvalue;
+		
+		console.log("ON_"+condVal["mode"+number]+"_"+condVal["fanVal"+number]+"_"+condVal["tempVal"+number]);
+	};
+	
+	$('.airconmode button').on('click', function() {
+		var thisBtn = $(this);
+		condVal["mode3"] = thisBtn.val();
+		console.log("ON_"+condVal["mode3"]+"_"+condVal["fanVal3"]+"_"+condVal["tempVal3"]);
+	});
+	
+	</script>
+	
+<!--	
+
+	window.addEventListener('load', (event) => {
+		var airconauto = document.getElementbyId("airconauto3");
+		airconauto.click();
+	});
+		
+	<script>
+		if (window.location.href.includes("room1")) {
+			room1function();
+			roomstylefunction();
+		}
+		if (window.location.href.includes("room2")) {
+			room2function();
+			roomstylefunction();
+		}
+		if (window.location.href.includes("room3")) {
+			room3function();
+			roomstylefunction();
+		}
+		
+   </script>
+
+	function increase(){
+			var add = document.getElementById("room1fanslider")
+			add.value = add.value + 10;
+			console.log(add.value);
+	}
+	function decrease(){
+			var subtract = document.getElementById("room1fanslider")
+			subtract.value = subtract.value - 10;
+			console.log(subtract.value);
+	}
+	
+	var form = document.getElementById("room1fanform");
+	function handleForm(event) { event.preventDefault(); } 
+	form.addEventListener('submit', handleForm);
+	
+	const roomButtonStyle = () => {
+		const url = window.location.href;
+		Object.entries(roomXfunction).forEach(([key, value]) => {
+			if (url.includes(key)) {
+				var str1 = key;
+				var str2 = "styles";
+				var res = str1.concat(str2);
+				const roombutton = document.getElementById(res);
+				roombutton.style.outline = "1px solid #0AFFEF";
+			}
+		});
+	};
+	roomButtonStyle();
+	var slider = document.getElementById("room1fanslider");
+	var output = document.getElementById("room1fanslideroutput");
+	output.innerHTML = slider.value; // Display the default slider value
+
+	// Update the current slider value (each time you drag the slider handle)
+	slider.oninput = function() {
+	  output.innerHTML = this.value;
+	}
+-->
+	
 </html>

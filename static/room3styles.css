@@ -1,0 +1,10 @@
+@import "Styles.css";
+.room1{
+	display:none;
+}
+.room2{
+	display:none;
+}
+.room3{
+	display:block;
+}

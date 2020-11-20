@@ -1,0 +1,49 @@
+$(document).ready(function(){
+  $("#room1sensor").click(function(){
+    $('link[href*="/static/styles.css"]').prop('disabled',true)  
+    $('link[href*="/static/room1styles.css"]').prop('disabled',false)
+	$('link[href*="/static/room2styles.css"]').prop('disabled',true)
+	$('link[href*="/static/room3styles.css"]').prop('disabled',true)
+  });
+  $("#room2sensor").click(function(){
+    $('link[href*="/static/styles.css"]').prop('disabled',true)  
+    $('link[href*="/static/room1styles.css"]').prop('disabled',true)
+	$('link[href*="/static/room2styles.css"]').prop('disabled',false)
+	$('link[href*="/static/room3styles.css"]').prop('disabled',true)
+  });
+  $("#room3sensor").click(function(){
+    $('link[href*="/static/styles.css"]').prop('disabled',true)  
+    $('link[href*="/static/room1styles.css"]').prop('disabled',true)
+	$('link[href*="/static/room2styles.css"]').prop('disabled',true)
+	$('link[href*="/static/room3styles.css"]').prop('disabled',false)
+  });
+});
+
+/*
+ $(document).ready(function(){
+  $("#room1sensor").click(function(){
+    $(".room1").css({
+		'display':'block'});
+    $(".room2").css({
+		'display':'none'});
+	$(".room3").css({
+		'display':'none'});
+  });
+  $("#room2sensor").click(function(){
+    $(".room1").css({
+		'display':'none'});
+    $(".room2").css({
+		'display':'block'});
+	$(".room3").css({
+		'display':'none'});
+  });
+  $("#room3sensor").click(function(){
+    $(".room1").css({
+		'display':'none'});
+    $(".room2").css({
+		'display':'none'});
+	$(".room3").css({
+		'display':'block'});
+  });
+});
+*/
