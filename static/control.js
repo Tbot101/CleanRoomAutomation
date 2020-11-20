@@ -30,16 +30,13 @@ var condVal = {
 	"fanVal3": "FANLOW"
 };
 
-
-// const onPageLoad = () => {
-// 	const url = document.cookie;
-// 	setRoom(url.slice(url.length-1));
-// };
-
-document.addEventListener("DOMContentLoaded", () => {
-	const url = document.cookie;
-	setRoom(url.slice(url.length-1));
-});
+const setfanSlider = (val) => {
+	try {
+		document.getElementById(`room${val}fanslider`).value = getroomValue(val);
+	} catch (e) {
+		console.log(`Room${val} fan is off.`);
+	}
+}
 
 function buttonChange(sign, number) {
 	var slider = document.getElementById("room"+number+"fanslider");
@@ -66,29 +63,13 @@ function getroomValue(number){
 	};
 
 fanloop(); */
-document.getElementById("room1fanslider").value = getroomValue(1);
-document.getElementById("room2fanslider").value = getroomValue(2);
-document.getElementById("room3fanslider").value = getroomValue(3);
+
 const airConEdit = (room, dir) => {
 	let val = parseInt(document.getElementById(`room${room}settemp`).value);
 	val += dir;
 	val = Math.max(Math.min(30, val), 19);
 	document.getElementById(`room${room}settemp`).value = val;
 };
-
-
-
-$(document).ready(function() {
-		// Get click event, assign button to var, and get values from that var
-	$('.airconmode button').on('click', function() {
-		$('.airconmode button').removeClass('airconmodeclicked')
-			$(this).addClass('airconmodeclicked');
-
-		var thisBtn = $(this);
-		thisBtn.addClass('active').siblings().removeClass('active');
-		localStorage.setItem("airconmodebutton", $(this).attr('id'));
-	});
-});
 
 function settempvalue(number){
 		var tempvalue = document.getElementById("room"+number+"settemp").value;
@@ -101,12 +82,6 @@ function gettempvalue(number){
 		}
 		return localStorage.getItem("room"+number+"_temp");
 }
-document.addEventListener('DOMContentLoaded', function() {
-	/*document.getElementById("room1settemp").value = gettempvalue(1);
-	document.getElementById("room2settemp").value = gettempvalue(2);*/
-	document.getElementById("room3settemp").value = gettempvalue(3);
-}, false);
-
 
 function fanlow(number){
 	var fanspeedimages = document.getElementById("fanspeedimageroom"+number)
@@ -119,32 +94,28 @@ function fanhigh(number){
 };
 
 function setfanvalue(number){
-			var fansrc = document.getElementById("fanspeedimageroom"+number).src;
-			localStorage.setItem("room"+number+"_fan", fansrc);
-	}
+		var fansrc = document.getElementById("fanspeedimageroom"+number).src;
+		localStorage.setItem("room"+number+"_fan", fansrc);
+}
 
-	function getfanvalue(number){
-			if (localStorage.getItem("room"+number+"_fan") === null) {// Check if there is selected date.
-						return "/static/images/fanlow.png";
-			}
-			return localStorage.getItem("room"+number+"_fan");
-	}
+function getfanvalue(number){
+		if (localStorage.getItem("room"+number+"_fan") === null) {// Check if there is selected date.
+					return "/static/images/fanlow.png";
+		}
+		return localStorage.getItem("room"+number+"_fan");
+}
 
 /*document.getElementById("fanspeedimageroom1").src = getfanvalue(1);
 document.getElementById("fanspeedimageroom2").src = getfanvalue(2);*/
-document.getElementById("fanspeedimageroom3").src = getfanvalue(3);
 
 function setairconvalue(number){
-			var airconsrc = document.getElementById("airconmodebutton"+number);
+	var airconsrc = document.getElementById("airconmodebutton"+number);
 	localStorage.setItem("room"+number+"_aircon", airconsrc);
-	}
+}
 
-	function getairconvalue(){
-			return localStorage.getItem("airconmodebutton");
-	}
-
-var localstorageaircon = getairconvalue();
-document.getElementById(localstorageaircon).classList.add('airconmodeclicked');
+function getairconvalue(){
+		return localStorage.getItem("airconmodebutton");
+}
 
 
 function getairconsignal(number){
@@ -165,8 +136,30 @@ function getairconsignal(number){
 	console.log("ON_"+condVal["mode"+number]+"_"+condVal["fanVal"+number]+"_"+condVal["tempVal"+number]);
 };
 
-$('.airconmode button').on('click', function() {
-	var thisBtn = $(this);
-	condVal["mode3"] = thisBtn.val();
-	console.log("ON_"+condVal["mode3"]+"_"+condVal["fanVal3"]+"_"+condVal["tempVal3"]);
+// Execute after page loaded
+document.addEventListener("DOMContentLoaded", () => {
+	// read cookie
+	const url = document.cookie;
+	setRoom(url.slice(url.length-1));
+	// read fan
+	for (let i = 1; i <= numRoom; ++i) {
+		setfanSlider(i)
+	}
+	try {
+		// Warning: hardcode to room 3 now, might need changes!
+		document.getElementById("room3settemp").value = gettempvalue(3);
+		document.getElementById("fanspeedimageroom3").src = getfanvalue(3);
+		document.getElementById(getairconvalue()).classList.add('airconmodeclicked');
+	} catch (e) {
+		console.log(`Room3 air con is off`);
+	}
+	$('.airconmode button').on('click', function() {
+		$('.airconmode button').removeClass('airconmodeclicked');
+		$(this).addClass('airconmodeclicked');
+
+		var thisBtn = $(this);
+		thisBtn.addClass('active').siblings().removeClass('active');
+		localStorage.setItem("airconmodebutton", $(this).attr('id'));
+		condVal["mode3"] = thisBtn.val();
+	});
 });
