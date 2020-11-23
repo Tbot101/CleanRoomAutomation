@@ -65,7 +65,6 @@ app = Flask(__name__, static_url_path='/static')
 def makeTemplateData():
     templateData = {}
     for k, v in roomPins.items():
-        v['status'] = GPIO.input(v['pin'])
         templateData[k] = v['status']
     return templateData
 
@@ -80,9 +79,13 @@ def action(deviceName, action):
     actuator = roomPins[deviceName]['pin']
 
     if action == "on":
-        GPIO.output(actuator, GPIO.HIGH)
+        if 'light' in deviceName:
+            GPIO.output(actuator, GPIO.HIGH)
+        roomPins[deviceName]['status'] = 1
     elif action == "off":
-        GPIO.output(actuator, GPIO.LOW)
+        if 'light' in deviceName:
+            GPIO.output(actuator, GPIO.LOW)
+        roomPins[deviceName]['status'] = 0
 
     templateData = makeTemplateData()
 

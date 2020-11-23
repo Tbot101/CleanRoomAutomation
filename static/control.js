@@ -19,12 +19,12 @@ const setRoom = (roomX) => {
 }
 
 var condVal = {
-	/*"mode1": "AUTO",
+	"mode1": "AUTO",
 	"tempVal1": 22,
-	"fanVal1": "FANLOW"
+	"fanVal1": "FANLOW",
 	"mode2": "AUTO",
 	"tempVal2": 22,
-	"fanVal2": "FANLOW"*/
+	"fanVal2": "FANLOW",
 	"mode3": "AUTO",
 	"tempVal3": 22,
 	"fanVal3": "FANLOW"
@@ -105,16 +105,27 @@ function getfanvalue(number){
 		return localStorage.getItem("room"+number+"_fan");
 }
 
-/*document.getElementById("fanspeedimageroom1").src = getfanvalue(1);
-document.getElementById("fanspeedimageroom2").src = getfanvalue(2);*/
-
-function setairconvalue(number){
-	var airconsrc = document.getElementById("airconmodebutton"+number);
-	localStorage.setItem("room"+number+"_aircon", airconsrc);
+function airconmodeformat(room, number){
+	
+	var children = document.getElementById("airconmode"+room).children;
+	for (var i=0; i<children.length; i++){
+		children[i].style.color="#8A959D";
+	}
+	var airconbutton = document.getElementById("airconmodebutton"+number);
+	airconbutton.style.color = "#0AFFEF";
 }
 
-function getairconvalue(){
-		return localStorage.getItem("airconmodebutton");
+
+function setairconvalue(room, number){
+	var airconsrc = document.getElementById("airconmodebutton"+number).id;
+	localStorage.setItem("room"+room+"_aircon", airconsrc);
+}
+
+function getairconvalue(number){
+		if (localStorage.getItem("room"+number+"_aircon") === null) {// Check if there is selected date.
+					return "airconmodebutton"+number+"1";
+		}
+		return localStorage.getItem("room"+number+"_aircon");
 }
 
 
@@ -132,8 +143,12 @@ function getairconsignal(number){
 		var fanvalue = "FANHIGH";
 	}
 	condVal["fanVal"+number] = fanvalue;
+	
+	var aircon = document.getElementById(getairconvalue(number));
+	var airconsrc = aircon.value;
+	condVal["mode"+number] = airconsrc;
 
-	console.log("ON_"+condVal["mode"+number]+"_"+condVal["fanVal"+number]+"_"+condVal["tempVal"+number]);
+	console.log("Room"+number+"_ON_"+condVal["mode"+number]+"_"+condVal["fanVal"+number]+"_"+condVal["tempVal"+number]);
 };
 
 // Execute after page loaded
@@ -147,19 +162,17 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 	try {
 		// Warning: hardcode to room 3 now, might need changes!
+		document.getElementById("room1settemp").value = gettempvalue(1);
+		document.getElementById("fanspeedimageroom1").src = getfanvalue(1);
+		document.getElementById(getairconvalue(1)).style.color="#0AFFEF";
+		document.getElementById("room2settemp").value = gettempvalue(2);
+		document.getElementById("fanspeedimageroom2").src = getfanvalue(2);
+		document.getElementById(getairconvalue(2)).style.color="#0AFFEF";
 		document.getElementById("room3settemp").value = gettempvalue(3);
 		document.getElementById("fanspeedimageroom3").src = getfanvalue(3);
-		document.getElementById(getairconvalue()).classList.add('airconmodeclicked');
+		document.getElementById(getairconvalue(3)).style.color="#0AFFEF";
+		
 	} catch (e) {
 		console.log(`Room3 air con is off`);
 	}
-	$('.airconmode button').on('click', function() {
-		$('.airconmode button').removeClass('airconmodeclicked');
-		$(this).addClass('airconmodeclicked');
-
-		var thisBtn = $(this);
-		thisBtn.addClass('active').siblings().removeClass('active');
-		localStorage.setItem("airconmodebutton", $(this).attr('id'));
-		condVal["mode3"] = thisBtn.val();
-	});
 });
