@@ -91,43 +91,21 @@ def action(deviceName, action):
 
     return render_template('main.html', **templateData)
 
-@app.route("/testroom1", methods=["POST"])
-def testroom1():
+@app.route("/fanslider/<string:room>", methods=["POST"])
+def fanslider(room):
     templateData = makeTemplateData()
+    numberstr = room[-1]
     # Get slider Values
-    slider1 = request.form["Room_1_Fan_Slider"]
+    slider = request.form["Room_"+numberstr+"_Fan_Slider"]
     # Change duty cycle
-    fans[0].ChangeDutyCycle(float(slider1))
+    numberint = int(numberstr)
+    i = numberint - 1
+    fans[i].ChangeDutyCycle(float(slider))
     # Give servo some time to move
     sleep(1)
     templateData = makeTemplateData()
     return render_template('main.html', **templateData)
 
-@app.route("/testroom2", methods=["POST"])
-def testroom2():
-    templateData = makeTemplateData()
-
-    # Get slider Values
-    slider2 = request.form["Room_2_Fan_Slider"]
-    # Change duty cycle
-    fans[1].ChangeDutyCycle(float(slider2))
-    # Give servo some time to move
-    sleep(1)
-    templateData = makeTemplateData()
-    return render_template('main.html', **templateData)
-
-@app.route("/testroom3", methods=["POST"])
-def testroom3():
-
-    # Get slider Values
-    slider3 = request.form["Room_3_Fan_Slider"]
-    # Change duty cycle
-    fans[2].ChangeDutyCycle(float(slider3))
-    # Give servo some time to move
-    sleep(1)
-    templateData = makeTemplateData()
-
-    return render_template('main.html', **templateData)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
