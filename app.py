@@ -15,6 +15,7 @@ roomPins = {
     'room1fan': {
         'pin': 12,
         'status': 0,
+        'pwm': 0,
     },
     'room1aircon': {
         'pin': 26,
@@ -28,6 +29,7 @@ roomPins = {
     'room2fan': {
         'pin': 13,
         'status': 0,
+        'pwm': 0,
     },
     'room2aircon': {
         'pin': 22,
@@ -41,6 +43,7 @@ roomPins = {
     'room3fan': {
         'pin': 6,
         'status': 0,
+        'pwm': 0,
     },
     'room3aircon': {
         'pin': 21,
@@ -82,11 +85,19 @@ def action(deviceName, action):
         if 'light' in deviceName:
             GPIO.output(actuator, GPIO.HIGH)
         roomPins[deviceName]['status'] = 1
+        if 'fan' in deviceName:
+            a = int(deviceName[4])-1
+            fanvalue = roomPins[deviceName]['pwm']
+            fans[a].ChangeDutyCycle(float(fanvalue))
     elif action == "off":
         if 'light' in deviceName:
             GPIO.output(actuator, GPIO.LOW)
+        if 'fan' in deviceName:
+            numberstr = deviceName[4]
+            i = int(numberstr) - 1
+            fans[i].ChangeDutyCycle(0)
         roomPins[deviceName]['status'] = 0
-
+        
     templateData = makeTemplateData()
 
     return render_template('main.html', **templateData)
@@ -97,6 +108,8 @@ def fanslider(room):
     numberstr = room[-1]
     # Get slider Values
     slider = request.form["Room_"+numberstr+"_Fan_Slider"]
+    deviceName = "room"+numberstr+"fan"
+    roomPins[deviceName]['pwm'] = slider
     # Change duty cycle
     numberint = int(numberstr)
     i = numberint - 1

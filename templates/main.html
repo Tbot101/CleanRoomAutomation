@@ -191,22 +191,22 @@
   			<div>
           {% if room2fan == 1 %}
           <img src="/static/images/fanon.png" class="utility">
-  				<div class="onoff">
-            <a href="/room2fan/on"class="button" id="room2_fan_on_button_on">ON</a>
-            <a href="/room2fan/off" class="button" id="room2_fan_off_button_off">OFF</a>
-          </div>
+  			<div class="onoff">
+				<a href="/room2fan/on"class="button" id="room2_fan_on_button_on">ON</a>
+				<a href="/room2fan/off" class="button" id="room2_fan_off_button_off">OFF</a>
+			</div>
           <div>
-    				<form method="POST" action="/fanslider/room2" id="room2fanform" class="slidecontainer" onsubmit="setroomValue(2)">
-      				<input type="image" src="/static/images/decrease.png" value="-" onclick="buttonChange(-1, 2)" class="decincbutton"/>
-      				<input type="image" src="/static/images/increase.png" value="+" onclick="buttonChange(1, 2)" class="decincbutton"/>
-      				<input type="range" min="0" max="100" step="10" value="0" class = "slider" name="Room_2_Fan_Slider" id="room2fanslider"/>
-    				</form>
+				<form method="POST" action="/fanslider/room2" id="room2fanform" class="slidecontainer" onsubmit="setroomValue(2)">
+				<input type="image" src="/static/images/decrease.png" value="-" onclick="buttonChange(-1, 2)" class="decincbutton"/>
+				<input type="image" src="/static/images/increase.png" value="+" onclick="buttonChange(1, 2)" class="decincbutton"/>
+				<input type="range" min="0" max="100" step="10" value="0" class = "slider" name="Room_2_Fan_Slider" id="room2fanslider"/>
+				</form>
           </div>
           {% else %}
           <img src="/static/images/fanoff.png" class="utility">
-  				<div class="onoff">
+  			<div class="onoff">
             <a href="/room2fan/on"class="button" id="room2_fan_on_button_off">ON</a>
-  		      <a href="/room2fan/off" class="button" id="room2_fan_off_button_on">OFF</a>
+  		    <a href="/room2fan/off" class="button" id="room2_fan_off_button_on">OFF</a>
           </div>
           {% endif %}
         </div>
@@ -281,7 +281,7 @@
   					<a href="/room3fan/on"class="button" id="room3_fan_on_button_on">ON</a>
   					<a href="/room3fan/off" class="button" id="room3_fan_off_button_off">OFF</a>
   				</div>
-          <div>
+				<div>
     				<form method="POST" action="/fanslider/room3" id="room3fanform" class="slidecontainer" onsubmit="setroomValue(3)">
       				<input type="image" src="/static/images/decrease.png" value="-" onclick="buttonChange(-1, 3)" class="decincbutton"/>
       				<input type="image" src="/static/images/increase.png" value="+" onclick="buttonChange(1, 3)" class="decincbutton"/>
