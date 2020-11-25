@@ -17,18 +17,18 @@ const setRoom = (roomX) => {
 	document.cookie = `room=room${roomX};path=/;`
 	curRoom = roomX;
 }
-
-var condVal = {
-	"mode1": "AUTO",
-	"tempVal1": 22,
-	"fanVal1": "FANLOW",
-	"mode2": "AUTO",
-	"tempVal2": 22,
-	"fanVal2": "FANLOW",
-	"mode3": "AUTO",
-	"tempVal3": 22,
-	"fanVal3": "FANLOW"
-};
+var condVal = {}
+for (let i = 1; i<= numRoom; i++){
+	condVal.push = ({
+		key: "mode"+i,
+		value: "AUTO",
+		key: "tempVal"+i,
+		value: 22,
+		key: "fanVal"+i,
+		value: "FANLOW",
+		});
+	}
+console.log(condVal);
 
 const setfanSlider = (val) => {
 	try {
@@ -38,8 +38,8 @@ const setfanSlider = (val) => {
 	}
 }
 
-function buttonChange(sign, number) {
-	var slider = document.getElementById("room"+number+"fanslider");
+function buttonChange(sign, room) {
+	var slider = document.getElementById("room"+room+"fanslider");
 	slider.value = parseInt(slider.value) + parseInt(sign) * 10;
 }
 
@@ -118,13 +118,13 @@ function getairconvalue(number){
 		}
 		return localStorage.getItem("room"+number+"_aircon");
 }
-
+/*
 function sendControl(forName) {
 	var r = new XMLHttpRequest();
 	r.open("GET","/" + forName);
 	r.setRequestHeader('Cache-Control', 'no-cache');
 	r.send();
-}
+}*/
 
 function getairconsignal(number){
 	var temp = document.getElementById("room"+number+"settemp");

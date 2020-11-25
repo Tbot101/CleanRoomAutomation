@@ -9,8 +9,7 @@
    <body class="grid">
       <div class="left-column">
          <img src="/static/images/logo.png" class="logo">
-         <div class="status">
-			 <button class="room" id="room1styles" onclick="setRoom(1)">
+         <div class="status"><button class="room" id="room1styles" onclick="setRoom(1)">
                <div class="roomtitle">Room 1</div>
                <div class="roomsensor">
                  {% if room1light == 1 %}
@@ -76,7 +75,50 @@
                  {% endif %}
                </div>
             </button>
-            
+            <button class="room" id="room4styles" onclick="setRoom(4)">
+               <div class="roomtitle">Room 4</div>
+               <div class="roomsensor">
+                 {% if room4light == 1 %}
+                 <img src="/static/images/lighton.png" class="utilityroomsensor">
+                 {% else %}
+                 <img src="/static/images/lightoff.png" class="utilityroomsensor">
+                 {% endif %}
+
+                 {% if room4fan == 1 %}
+                 <img src="/static/images/fanon.png" class="utilityroomsensor">
+                 {% else %}
+                 <img src="/static/images/fanoff.png" class="utilityroomsensor">
+                 {% endif %}
+
+                 {% if room4aircon == 1 %}
+                 <img src="/static/images/airconon.png" class="utilityroomsensor">
+                 {% else %}
+                 <img src="/static/images/airconoff.png" class="utilityroomsensor">
+                 {% endif %}
+               </div>
+            </button>
+            <button class="room" id="room5styles" onclick="setRoom(5)">
+               <div class="roomtitle">Room 5</div>
+               <div class="roomsensor">
+                 {% if room5light == 1 %}
+                 <img src="/static/images/lighton.png" class="utilityroomsensor">
+                 {% else %}
+                 <img src="/static/images/lightoff.png" class="utilityroomsensor">
+                 {% endif %}
+
+                 {% if room5fan == 1 %}
+                 <img src="/static/images/fanon.png" class="utilityroomsensor">
+                 {% else %}
+                 <img src="/static/images/fanoff.png" class="utilityroomsensor">
+                 {% endif %}
+
+                 {% if room5aircon == 1 %}
+                 <img src="/static/images/airconon.png" class="utilityroomsensor">
+                 {% else %}
+                 <img src="/static/images/airconoff.png" class="utilityroomsensor">
+                 {% endif %}
+               </div>
+            </button>
             </div>
       </div>
       <div class="light room1">
@@ -334,6 +376,177 @@
           </div>
           {% endif %}
       </div>
+      <div class="light room4">
+        <h3>Light</h3>
+        {% if room4light == 1 %}
+        <img src="/static/images/lighton.png" class="utility">
+        <div class="onoff">
+          <a href="/room4light/on"class="button light_on_button_on">ON</a>
+          <a href="/room4light/off" class="button light_off_button_off">OFF</a>
+        </div>
+        {% else %}
+        <img src="/static/images/lightoff.png" class="utility">
+        <div class="onoff">
+          <a href="/room4light/on" class="button light_on_button_off">ON</a>
+          <a href="/room4light/off" class="button light_off_button_on">OFF</a>
+        </div>
+        {% endif %}
+        <div class="roomnumber">ROOM 4</div>
+      </div>
+      <div class="fan room4">
+        <h3>Fan</h3>
+        <div>
+          {% if room4fan == 1 %}
+          <img src="/static/images/fanon.png" class="utility">
+          <div class="onoff">
+            <a href="/room4fan/on" class="button fan_on_button_on">ON</a>
+            <a href="/room4fan/off" class="button fan_off_button_off">OFF</a>
+          </div>
+          <div>
+            <form method="POST" action="/fanslider/room4" id="room4fanform" class="slidecontainer" onsubmit="setroomValue(4)">
+              <input type="image" src="/static/images/decrease.png" value="-" onclick="buttonChange(-1, 4)" class="decincbutton"/>
+              <input type="image" src="/static/images/increase.png" value="+" onclick="buttonChange(1, 4)" class="decincbutton"/>
+              <input type="range" min="0" max="100" step="10" value="0" class="slider" name="Room_4_Fan_Slider" id="room4fanslider"/>
+            </form>
+          </div>
+          {% else %}
+          <img src="/static/images/fanoff.png" class="utility">
+          <div class="onoff">
+            <a href="/room4fan/on" class="button fan_on_button_off">ON</a>
+            <a href="/room4fan/off" class="button fan_off_button_on">OFF</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="aircon room4">
+         <h3>Air Conditioner</h3>
+         {% if room4aircon == 1 %}
+         <img src="/static/images/airconon.png" class="utility">
+         <div class="onoff">
+            <a href="/room4aircon/on" class="button aircon_on_button_on">ON</a>
+            <a href="/room4aircon/off" class="button aircon_off_button_off">OFF</a>
+          </div>
+          <div class="airconstats">
+            <div class="settemp">
+                <p class="settempheader">SET TEMP</p>
+                <input type="number" value="22" minimum="19" maximum="30" class="qty" id="room4settemp">
+                <p class="degrees">C</p>
+                <input type="image" src="/static/images/increase.png" onclick="airConEdit(4, 1); settempvalue(4); getairconsignal(4); " class="qty-plus settempbutton">
+                <input type="image" src="/static/images/decrease.png" onclick="airConEdit(4, -1); settempvalue(4); getairconsignal(4); " class="qty-minus settempbutton">
+            </div>
+            <div class="fanspeed">
+                <div>
+                    <p class="fanspeedheader">FAN SPEED</p>
+                    <input type="image" src="/static/images/fanlow.png" class="fanspeedimage" id="fanspeedimageroom4">
+                </div>
+                <div class="fanspeedbuttonwrapper">
+                    <input type="image" src="/static/images/increase.png" class="fanspeedbutton" onclick="fanhigh(4); setfanvalue(4); getairconsignal(4)">
+                    <input type="image" src="/static/images/decrease.png" class="fanspeedbutton" onclick="fanlow(4); setfanvalue(4); getairconsignal(4)">
+                </div>
+            </div>
+            <div class="airconmodebuttonwrapper">
+              <p class="airconmodeheader">Mode</p>
+              <div class="airconmode" id="airconmode4">
+                <button value="AUTO" class="airconmodebutton" id="airconmodebutton41" onclick="airconmodeformat(4, 41); setairconvalue(4, 41); getairconsignal(4)">Auto</button>
+                <button value="COOL" class="airconmodebutton" id="airconmodebutton42" onclick="airconmodeformat(4, 42); setairconvalue(4, 42); getairconsignal(4)">Cool</button>
+                <button value="FAN" class="airconmodebutton" id="airconmodebutton43" onclick="airconmodeformat(4, 43); setairconvalue(4, 43); getairconsignal(4)">Fan</button>
+              </div>
+            </div>
+          </div>
+          {% else %}
+          <img src="/static/images/airconoff.png" class="utility">
+          <div class="onoff">
+              <a href="/room4aircon/on" class="button aircon_on_button_off">ON</a>
+              <a href="/room4aircon/off" class="button aircon_off_button_on">OFF</a>
+          </div>
+          {% endif %}
+      </div>
+      <div class="light room5">
+        <h3>Light</h3>
+        {% if room5light == 1 %}
+        <img src="/static/images/lighton.png" class="utility">
+        <div class="onoff">
+          <a href="/room5light/on"class="button light_on_button_on">ON</a>
+          <a href="/room5light/off" class="button light_off_button_off">OFF</a>
+        </div>
+        {% else %}
+        <img src="/static/images/lightoff.png" class="utility">
+        <div class="onoff">
+          <a href="/room5light/on" class="button light_on_button_off">ON</a>
+          <a href="/room5light/off" class="button light_off_button_on">OFF</a>
+        </div>
+        {% endif %}
+        <div class="roomnumber">ROOM 5</div>
+      </div>
+      <div class="fan room5">
+        <h3>Fan</h3>
+        <div>
+          {% if room5fan == 1 %}
+          <img src="/static/images/fanon.png" class="utility">
+          <div class="onoff">
+            <a href="/room5fan/on" class="button fan_on_button_on">ON</a>
+            <a href="/room5fan/off" class="button fan_off_button_off">OFF</a>
+          </div>
+          <div>
+            <form method="POST" action="/fanslider/room5" id="room5fanform" class="slidecontainer" onsubmit="setroomValue(5)">
+              <input type="image" src="/static/images/decrease.png" value="-" onclick="buttonChange(-1, 5)" class="decincbutton"/>
+              <input type="image" src="/static/images/increase.png" value="+" onclick="buttonChange(1, 5)" class="decincbutton"/>
+              <input type="range" min="0" max="100" step="10" value="0" class="slider" name="Room_5_Fan_Slider" id="room5fanslider"/>
+            </form>
+          </div>
+          {% else %}
+          <img src="/static/images/fanoff.png" class="utility">
+          <div class="onoff">
+            <a href="/room5fan/on" class="button fan_on_button_off">ON</a>
+            <a href="/room5fan/off" class="button fan_off_button_on">OFF</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="aircon room5">
+         <h3>Air Conditioner</h3>
+         {% if room5aircon == 1 %}
+         <img src="/static/images/airconon.png" class="utility">
+         <div class="onoff">
+            <a href="/room5aircon/on" class="button aircon_on_button_on">ON</a>
+            <a href="/room5aircon/off" class="button aircon_off_button_off">OFF</a>
+          </div>
+          <div class="airconstats">
+            <div class="settemp">
+                <p class="settempheader">SET TEMP</p>
+                <input type="number" value="22" minimum="19" maximum="30" class="qty" id="room5settemp">
+                <p class="degrees">C</p>
+                <input type="image" src="/static/images/increase.png" onclick="airConEdit(5, 1); settempvalue(5); getairconsignal(5); " class="qty-plus settempbutton">
+                <input type="image" src="/static/images/decrease.png" onclick="airConEdit(5, -1); settempvalue(5); getairconsignal(5); " class="qty-minus settempbutton">
+            </div>
+            <div class="fanspeed">
+                <div>
+                    <p class="fanspeedheader">FAN SPEED</p>
+                    <input type="image" src="/static/images/fanlow.png" class="fanspeedimage" id="fanspeedimageroom5">
+                </div>
+                <div class="fanspeedbuttonwrapper">
+                    <input type="image" src="/static/images/increase.png" class="fanspeedbutton" onclick="fanhigh(5); setfanvalue(5); getairconsignal(5)">
+                    <input type="image" src="/static/images/decrease.png" class="fanspeedbutton" onclick="fanlow(5); setfanvalue(5); getairconsignal(5)">
+                </div>
+            </div>
+            <div class="airconmodebuttonwrapper">
+              <p class="airconmodeheader">Mode</p>
+              <div class="airconmode" id="airconmode5">
+                <button value="AUTO" class="airconmodebutton" id="airconmodebutton51" onclick="airconmodeformat(5, 51); setairconvalue(5, 51); getairconsignal(5)">Auto</button>
+                <button value="COOL" class="airconmodebutton" id="airconmodebutton52" onclick="airconmodeformat(5, 52); setairconvalue(5, 52); getairconsignal(5)">Cool</button>
+                <button value="FAN" class="airconmodebutton" id="airconmodebutton53" onclick="airconmodeformat(5, 53); setairconvalue(5, 53); getairconsignal(5)">Fan</button>
+              </div>
+            </div>
+          </div>
+          {% else %}
+          <img src="/static/images/airconoff.png" class="utility">
+          <div class="onoff">
+              <a href="/room5aircon/on" class="button aircon_on_button_off">ON</a>
+              <a href="/room5aircon/off" class="button aircon_off_button_on">OFF</a>
+          </div>
+          {% endif %}
+      </div>
+      
       </div>
    </body>
 </html>
