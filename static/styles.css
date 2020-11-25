@@ -1,7 +1,52 @@
-:root{
-	--style-block: block;
-	--style-none: none; 
+
+.light_on_button_on{
+	color: #0AFFEF;
 }
+.light_on_button_off{
+	color: #8A959D;
+}
+.light_off_button_on{
+	color: #E32626;
+}
+.light_off_button_off{
+	color: #8A959D;
+}
+.fan_on_button_on{
+	color: #0AFFEF;
+}
+.fan_on_button_off{
+	color: #8A959D;
+}
+.fan_off_button_on{
+	color: #E32626;
+}
+.fan_off_button_off{
+	color: #8A959D;
+}
+.aircon_on_button_on{
+	color: #0AFFEF;
+}
+.aircon_on_button_off{
+	color: #8A959D;
+}
+.aircon_off_button_on{
+	color: #E32626;
+}
+.aircon_off_button_off{
+	color: #8A959D;
+}
+
+.room1{
+	display: block;
+}
+.room2{
+	display: none;
+}
+.room3{
+	display: none;
+}
+
+
 body {
 	background: #243441;
 	overflow-x: hidden;
@@ -79,118 +124,6 @@ h3{
 .utility{
 	width:50%;
 }
-
-#room1_light_on_button_on{
-	color: #0AFFEF;
-}
-#room1_light_on_button_off{
-	color: #8A959D;
-}
-#room1_light_off_button_on{
-	color: #E32626;
-}
-#room1_light_off_button_off{
-	color: #8A959D;
-}
-#room1_fan_on_button_on{
-	color: #0AFFEF;
-}
-#room1_fan_on_button_off{
-	color: #8A959D;
-}
-#room1_fan_off_button_on{
-	color: #E32626;
-}
-#room1_fan_off_button_off{
-	color: #8A959D;
-}
-#room1_aircon_on_button_on{
-	color: #0AFFEF;
-}
-#room1_aircon_on_button_off{
-	color: #8A959D;
-}
-#room1_aircon_off_button_on{
-	color: #E32626;
-}
-#room1_aircon_off_button_off{
-	color: #8A959D;
-}
-
-#room2_light_on_button_on{
-	color: #0AFFEF;
-}
-#room2_light_on_button_off{
-	color: #8A959D;
-}
-#room2_light_off_button_on{
-	color: #E32626;
-}
-#room2_light_off_button_off{
-	color: #8A959D;
-}
-#room2_fan_on_button_on{
-	color: #0AFFEF;
-}
-#room2_fan_on_button_off{
-	color: #8A959D;
-}
-#room2_fan_off_button_on{
-	color: #E32626;
-}
-#room2_fan_off_button_off{
-	color: #8A959D;
-}
-#room2_aircon_on_button_on{
-	color: #0AFFEF;
-}
-#room2_aircon_on_button_off{
-	color: #8A959D;
-}
-#room2_aircon_off_button_on{
-	color: #E32626;
-}
-#room2_aircon_off_button_off{
-	color: #8A959D;
-}
-
-#room3_light_on_button_on{
-	color: #0AFFEF;
-}
-#room3_light_on_button_off{
-	color: #8A959D;
-}
-#room3_light_off_button_on{
-	color: #E32626;
-}
-#room3_light_off_button_off{
-	color: #8A959D;
-}
-#room3_fan_on_button_on{
-	color: #0AFFEF;
-}
-#room3_fan_on_button_off{
-	color: #8A959D;
-}
-#room3_fan_off_button_on{
-	color: #E32626;
-}
-#room3_fan_off_button_off{
-	color: #8A959D;
-}
-#room3_aircon_on_button_on{
-	color: #0AFFEF;
-}
-#room3_aircon_on_button_off{
-	color: #8A959D;
-}
-#room3_aircon_off_button_on{
-	color: #E32626;
-}
-#room3_aircon_off_button_off{
-	color: #8A959D;
-}
-
 .room{
 	align-items:center;
 }
@@ -216,15 +149,6 @@ h3{
 	box-shadow: -2px 2px 10px 2px #707070, 2px -2px 5px 2px;	
 	background: #243441;
 	cursor: pointer;
-}
-.room1{
-	display: block;
-}
-.room2{
-	display: none;
-}
-.room3{
-	display: none;
 }
 .status{
 	display: flex;

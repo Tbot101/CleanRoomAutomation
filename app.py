@@ -1,6 +1,8 @@
 import RPi.GPIO as GPIO
 from flask import Flask, render_template, request
 from time import sleep
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import subprocess
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)

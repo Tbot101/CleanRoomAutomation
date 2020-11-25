@@ -55,15 +55,6 @@ function getroomValue(number){
 		return localStorage.getItem("room"+number+"_value");
 }
 
-/* function fanloop(){
-	var i;
-	for (i=0; i < 4; i++){
-		document.getElementById("room"+i+"fanslider").value = getroomValue(i);
-		};
-	};
-
-fanloop(); */
-
 const airConEdit = (room, dir) => {
 	let val = parseInt(document.getElementById(`room${room}settemp`).value);
 	val += dir;
@@ -128,6 +119,12 @@ function getairconvalue(number){
 		return localStorage.getItem("room"+number+"_aircon");
 }
 
+function sendControl(forName) {
+	var r = new XMLHttpRequest();
+	r.open("GET","/" + forName);
+	r.setRequestHeader('Cache-Control', 'no-cache');
+	r.send();
+}
 
 function getairconsignal(number){
 	var temp = document.getElementById("room"+number+"settemp");
@@ -148,7 +145,7 @@ function getairconsignal(number){
 	var airconsrc = aircon.value;
 	condVal["mode"+number] = airconsrc;
 
-	console.log("Room"+number+"_ON_"+condVal["mode"+number]+"_"+condVal["fanVal"+number]+"_"+condVal["tempVal"+number]);
+	sendControl("Room"+number+"_ON_"+condVal["mode"+number]+"_"+condVal["fanVal"+number]+"_"+condVal["tempVal"+number]);
 };
 
 // Execute after page loaded
@@ -161,17 +158,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		setfanSlider(i)
 	}
 	try {
-		// Warning: hardcode to room 3 now, might need changes!
-		document.getElementById("room1settemp").value = gettempvalue(1);
-		document.getElementById("fanspeedimageroom1").src = getfanvalue(1);
-		document.getElementById(getairconvalue(1)).style.color="#0AFFEF";
-		document.getElementById("room2settemp").value = gettempvalue(2);
-		document.getElementById("fanspeedimageroom2").src = getfanvalue(2);
-		document.getElementById(getairconvalue(2)).style.color="#0AFFEF";
-		document.getElementById("room3settemp").value = gettempvalue(3);
-		document.getElementById("fanspeedimageroom3").src = getfanvalue(3);
-		document.getElementById(getairconvalue(3)).style.color="#0AFFEF";
-		
+		for (let i = 1; i <= numRoom; i++){
+			document.getElementById("room"+i+"settemp").value = gettempvalue(i);
+			document.getElementById("fanspeedimageroom"+i).src = getfanvalue(i);
+			document.getElementById(getairconvalue(i)).style.color="#0AFFEF";
+			};
 	} catch (e) {
 		console.log(`Room3 air con is off`);
 	}
