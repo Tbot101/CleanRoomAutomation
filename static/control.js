@@ -118,13 +118,13 @@ function getairconvalue(number){
 		}
 		return localStorage.getItem("room"+number+"_aircon");
 }
-/*
-function sendControl(forName) {
+
+function sendControl(room, forName) {
 	var r = new XMLHttpRequest();
-	r.open("GET","/" + forName);
+	r.open("GET","/aircon/" + room + "/" + forName);
 	r.setRequestHeader('Cache-Control', 'no-cache');
 	r.send();
-}*/
+}
 
 function getairconsignal(number){
 	var temp = document.getElementById("room"+number+"settemp");
@@ -144,8 +144,7 @@ function getairconsignal(number){
 	var aircon = document.getElementById(getairconvalue(number));
 	var airconsrc = aircon.value;
 	condVal["mode"+number] = airconsrc;
-
-	sendControl("Room"+number+"_ON_"+condVal["mode"+number]+"_"+condVal["fanVal"+number]+"_"+condVal["tempVal"+number]);
+	sendControl("Room"+number, "ON_"+condVal["mode"+number]+"_"+condVal["fanVal"+number]+"_"+condVal["tempVal"+number]);
 };
 
 // Execute after page loaded

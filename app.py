@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 from flask import Flask, render_template, request
 from time import sleep
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import subprocess
+import os
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -106,7 +106,6 @@ def action(deviceName, action):
 
 @app.route("/fanslider/<string:room>", methods=["POST"])
 def fanslider(room):
-    templateData = makeTemplateData()
     numberstr = room[-1]
     # Get slider Values
     slider = request.form["Room_"+numberstr+"_Fan_Slider"]
@@ -118,6 +117,13 @@ def fanslider(room):
     fans[i].ChangeDutyCycle(float(slider))
     # Give servo some time to move
     sleep(1)
+    templateData = makeTemplateData()
+    return render_template('main.html', **templateData)
+
+@app.route("/aircon/<string:room>/<string:forName>", methods=["GET"])
+def aircon(room, forName):
+    print(room)
+    os.system("irsend SEND_ONCE MITSUBISHI "+forName)
     templateData = makeTemplateData()
     return render_template('main.html', **templateData)
 
