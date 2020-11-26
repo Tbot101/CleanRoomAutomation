@@ -95,7 +95,7 @@ for i in range(1,6):
          <img src="/static/images/airconon.png" class="utility">
          <div class="onoff">
             <a href="/roomCHANGENUMBERaircon/on" class="button aircon_on_button_on">ON</a>
-            <a href="/roomCHANGENUMBERaircon/off" class="button aircon_off_button_off">OFF</a>
+            <a href="/roomCHANGENUMBERaircon/off" class="button aircon_off_button_off" onclick="airconoff(CHANGENUMBER)">OFF</a>
           </div>
           <div class="airconstats">
             <div class="settemp">
@@ -128,7 +128,7 @@ for i in range(1,6):
           <img src="/static/images/airconoff.png" class="utility">
           <div class="onoff">
               <a href="/roomCHANGENUMBERaircon/on" class="button aircon_on_button_off">ON</a>
-              <a href="/roomCHANGENUMBERaircon/off" class="button aircon_off_button_on">OFF</a>
+              <a href="/roomCHANGENUMBERaircon/off" class="button aircon_off_button_on" onclick="airconoff(CHANGENUMBER)">OFF</a>
           </div>
           {% endif %}
       </div>

@@ -25,7 +25,7 @@ roomPins = {
     },
 
     'room2light': {
-        'pin': 17,
+        'pin': 3,
         'status': 0,
     },
     'room2fan': {

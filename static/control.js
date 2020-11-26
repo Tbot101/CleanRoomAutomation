@@ -126,6 +126,10 @@ function sendControl(room, forName) {
 	r.send();
 }
 
+function airconoff(number){
+	sendControl("Room"+number, "OFF")
+}
+
 function getairconsignal(number){
 	var temp = document.getElementById("room"+number+"settemp");
 	var tempvalue = temp.value;

@@ -297,7 +297,7 @@
          <img src="/static/images/airconon.png" class="utility">
          <div class="onoff">
             <a href="/room3aircon/on" class="button aircon_on_button_on">ON</a>
-            <a href="/room3aircon/off" class="button aircon_off_button_off">OFF</a>
+            <a href="/room3aircon/off" class="button aircon_off_button_off" onclick="airconoff(3)">OFF</a>
           </div>
           <div class="airconstats">
             <div class="settemp">
@@ -330,7 +330,7 @@
           <img src="/static/images/airconoff.png" class="utility">
           <div class="onoff">
               <a href="/room3aircon/on" class="button aircon_on_button_off">ON</a>
-              <a href="/room3aircon/off" class="button aircon_off_button_on">OFF</a>
+              <a href="/room3aircon/off" class="button aircon_off_button_on" onclick="airconoff(3)">OFF</a>
           </div>
           {% endif %}
       </div>
