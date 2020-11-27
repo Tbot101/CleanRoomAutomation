@@ -127,25 +127,21 @@
          <img src="/static/images/airconon.png" class="utility">
          <div class="onoff">
             <a href="/room1aircon/on" class="button aircon_on_button_on">ON</a>
-            <a href="/room1aircon/off" class="button aircon_off_button_off">OFF</a>
+            <a href="/room1aircon/off" class="button aircon_off_button_off" onclick="airconoff(3)">OFF</a>
           </div>
           <div class="airconstats">
-            <div class="settemp">
+            <div class="settemp" id="settempwrapper1">
                 <p class="settempheader">SET TEMP</p>
                 <input type="number" value="22" minimum="19" maximum="30" class="qty" id="room1settemp">
-                <p class="degrees">C</p>
+                <p class="degrees">°C</p>
                 <input type="image" src="/static/images/increase.png" onclick="airConEdit(1, 1); settempvalue(1); getairconsignal(1); " class="qty-plus settempbutton">
                 <input type="image" src="/static/images/decrease.png" onclick="airConEdit(1, -1); settempvalue(1); getairconsignal(1); " class="qty-minus settempbutton">
             </div>
             <div class="fanspeed">
-                <div>
-                    <p class="fanspeedheader">FAN SPEED</p>
-                    <input type="image" src="/static/images/fanlow.png" class="fanspeedimage" id="fanspeedimageroom1">
-                </div>
-                <div class="fanspeedbuttonwrapper">
-                    <input type="image" src="/static/images/increase.png" class="fanspeedbutton" onclick="fanhigh(1); setfanvalue(1); getairconsignal(1)">
-                    <input type="image" src="/static/images/decrease.png" class="fanspeedbutton" onclick="fanlow(1); setfanvalue(1); getairconsignal(1)">
-                </div>
+				<p class="fanspeedheader">FAN SPEED</p>
+				<input type="image" src="/static/images/fanlow.png" class="fanspeedimage" id="fanspeedimageroom1">
+				<input type="image" src="/static/images/increase.png" class="fanspeedbuttonhigh" onclick="fanhigh(1); setfanvalue(1); getairconsignal(1)">
+				<input type="image" src="/static/images/decrease.png" class="fanspeedbuttonlow" onclick="fanlow(1); setfanvalue(1); getairconsignal(1)">
             </div>
             <div class="airconmodebuttonwrapper">
               <p class="airconmodeheader">Mode</p>
@@ -160,7 +156,7 @@
           <img src="/static/images/airconoff.png" class="utility">
           <div class="onoff">
               <a href="/room1aircon/on" class="button aircon_on_button_off">ON</a>
-              <a href="/room1aircon/off" class="button aircon_off_button_on">OFF</a>
+              <a href="/room1aircon/off" class="button aircon_off_button_on" onclick="airconoff(1)">OFF</a>
           </div>
           {% endif %}
       </div>
@@ -212,13 +208,13 @@
          <img src="/static/images/airconon.png" class="utility">
          <div class="onoff">
             <a href="/room2aircon/on" class="button aircon_on_button_on">ON</a>
-            <a href="/room2aircon/off" class="button aircon_off_button_off">OFF</a>
+            <a href="/room2aircon/off" class="button aircon_off_button_off" onclick="airconoff(2)">OFF</a>
           </div>
           <div class="airconstats">
-            <div class="settemp">
+            <div class="settemp" id="settempwrapper2">
                 <p class="settempheader">SET TEMP</p>
                 <input type="number" value="22" minimum="19" maximum="30" class="qty" id="room2settemp">
-                <p class="degrees">C</p>
+                <p class="degrees">°C</p>
                 <input type="image" src="/static/images/increase.png" onclick="airConEdit(2, 1); settempvalue(2); getairconsignal(2); " class="qty-plus settempbutton">
                 <input type="image" src="/static/images/decrease.png" onclick="airConEdit(2, -1); settempvalue(2); getairconsignal(2); " class="qty-minus settempbutton">
             </div>
@@ -228,8 +224,8 @@
                     <input type="image" src="/static/images/fanlow.png" class="fanspeedimage" id="fanspeedimageroom2">
                 </div>
                 <div class="fanspeedbuttonwrapper">
-                    <input type="image" src="/static/images/increase.png" class="fanspeedbutton" onclick="fanhigh(2); setfanvalue(2); getairconsignal(2)">
-                    <input type="image" src="/static/images/decrease.png" class="fanspeedbutton" onclick="fanlow(2); setfanvalue(2); getairconsignal(2)">
+                    <input type="image" src="/static/images/increase.png" class="fanspeedbuttonhigh" onclick="fanhigh(2); setfanvalue(2); getairconsignal(2)">
+                    <input type="image" src="/static/images/decrease.png" class="fanspeedbuttonlow" onclick="fanlow(2); setfanvalue(2); getairconsignal(2)">
                 </div>
             </div>
             <div class="airconmodebuttonwrapper">
@@ -245,7 +241,7 @@
           <img src="/static/images/airconoff.png" class="utility">
           <div class="onoff">
               <a href="/room2aircon/on" class="button aircon_on_button_off">ON</a>
-              <a href="/room2aircon/off" class="button aircon_off_button_on">OFF</a>
+              <a href="/room2aircon/off" class="button aircon_off_button_on" onclick="airconoff(2)">OFF</a>
           </div>
           {% endif %}
       </div>
@@ -300,10 +296,10 @@
             <a href="/room3aircon/off" class="button aircon_off_button_off" onclick="airconoff(3)">OFF</a>
           </div>
           <div class="airconstats">
-            <div class="settemp">
+            <div class="settemp" id="settempwrapper3">
                 <p class="settempheader">SET TEMP</p>
                 <input type="number" value="22" minimum="19" maximum="30" class="qty" id="room3settemp">
-                <p class="degrees">C</p>
+                <p class="degrees">°C</p>
                 <input type="image" src="/static/images/increase.png" onclick="airConEdit(3, 1); settempvalue(3); getairconsignal(3); " class="qty-plus settempbutton">
                 <input type="image" src="/static/images/decrease.png" onclick="airConEdit(3, -1); settempvalue(3); getairconsignal(3); " class="qty-minus settempbutton">
             </div>
@@ -313,8 +309,8 @@
                     <input type="image" src="/static/images/fanlow.png" class="fanspeedimage" id="fanspeedimageroom3">
                 </div>
                 <div class="fanspeedbuttonwrapper">
-                    <input type="image" src="/static/images/increase.png" class="fanspeedbutton" onclick="fanhigh(3); setfanvalue(3); getairconsignal(3)">
-                    <input type="image" src="/static/images/decrease.png" class="fanspeedbutton" onclick="fanlow(3); setfanvalue(3); getairconsignal(3)">
+                    <input type="image" src="/static/images/increase.png" class="fanspeedbuttonhigh" onclick="fanhigh(3); setfanvalue(3); getairconsignal(3)">
+                    <input type="image" src="/static/images/decrease.png" class="fanspeedbuttonlow" onclick="fanlow(3); setfanvalue(3); getairconsignal(3)">
                 </div>
             </div>
             <div class="airconmodebuttonwrapper">

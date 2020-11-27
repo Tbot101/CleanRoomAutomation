@@ -98,10 +98,10 @@ for i in range(1,6):
             <a href="/roomCHANGENUMBERaircon/off" class="button aircon_off_button_off" onclick="airconoff(CHANGENUMBER)">OFF</a>
           </div>
           <div class="airconstats">
-            <div class="settemp">
+            <div class="settemp" id="settempwrapperCHANGENUMBER">
                 <p class="settempheader">SET TEMP</p>
                 <input type="number" value="22" minimum="19" maximum="30" class="qty" id="roomCHANGENUMBERsettemp">
-                <p class="degrees">C</p>
+                <p class="degrees">°C</p>
                 <input type="image" src="/static/images/increase.png" onclick="airConEdit(CHANGENUMBER, 1); settempvalue(CHANGENUMBER); getairconsignal(CHANGENUMBER); " class="qty-plus settempbutton">
                 <input type="image" src="/static/images/decrease.png" onclick="airConEdit(CHANGENUMBER, -1); settempvalue(CHANGENUMBER); getairconsignal(CHANGENUMBER); " class="qty-minus settempbutton">
             </div>
