@@ -21,7 +21,7 @@ var condVal = {}
 for (let i = 1; i<= numRoom; i++){
 	condVal.push = ({
 		key: "mode"+i,
-		value: "AUTO",
+		value: "COOL",
 		key: "tempVal"+i,
 		value: 22,
 		key: "fanVal"+i,
@@ -174,6 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				temp.style.visibility = 'hidden';
 				}
 			};
+			sendControl("Room"+i, "ON_"+getairconvalue(i)+"_"+getfanvalue(i)+"_"+gettempvalue(i));
 	} catch (e) {
 		console.log(`Room3 air con is off`);
 	}

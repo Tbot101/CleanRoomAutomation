@@ -122,7 +122,9 @@ def fanslider(room):
 
 @app.route("/aircon/<string:room>/<string:forName>", methods=["GET"])
 def aircon(room, forName):
-    print(room)
+    if "ON_FAN" in forName:
+        forName = forName[:-3]
+    print(forName)
     os.system("irsend SEND_ONCE MITSUBISHI "+forName)
     templateData = makeTemplateData()
     return render_template('main.html', **templateData)

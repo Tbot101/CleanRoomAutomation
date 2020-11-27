@@ -118,8 +118,8 @@ for i in range(1,6):
             <div class="airconmodebuttonwrapper">
               <p class="airconmodeheader">Mode</p>
               <div class="airconmode" id="airconmodeCHANGENUMBER">
-                <button value="AUTO" class="airconmodebutton" id="airconmodebuttonCHANGENUMBER1" onclick="airconmodeformat(CHANGENUMBER, CHANGENUMBER1); setairconvalue(CHANGENUMBER, CHANGENUMBER1); getairconsignal(CHANGENUMBER)">Auto</button>
-                <button value="COOL" class="airconmodebutton" id="airconmodebuttonCHANGENUMBER2" onclick="airconmodeformat(CHANGENUMBER, CHANGENUMBER2); setairconvalue(CHANGENUMBER, CHANGENUMBER2); getairconsignal(CHANGENUMBER)">Cool</button>
+                <button value="COOL" class="airconmodebutton" id="airconmodebuttonCHANGENUMBER1" onclick="airconmodeformat(CHANGENUMBER, CHANGENUMBER1); setairconvalue(CHANGENUMBER, CHANGENUMBER1); getairconsignal(CHANGENUMBER)">Cool</button>
+                <button value="DRY" class="airconmodebutton" id="airconmodebuttonCHANGENUMBER2" onclick="airconmodeformat(CHANGENUMBER, CHANGENUMBER2); setairconvalue(CHANGENUMBER, CHANGENUMBER2); getairconsignal(CHANGENUMBER)">Dry</button>
                 <button value="FAN" class="airconmodebutton" id="airconmodebuttonCHANGENUMBER3" onclick="airconmodeformat(CHANGENUMBER, CHANGENUMBER3); setairconvalue(CHANGENUMBER, CHANGENUMBER3); getairconsignal(CHANGENUMBER)">Fan</button>
               </div>
             </div>
