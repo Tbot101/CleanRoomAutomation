@@ -23,7 +23,6 @@ roomPins = {
         'pin': 26,
         'status': 0,
     },
-
     'room2light': {
         'pin': 3,
         'status': 0,
@@ -37,7 +36,6 @@ roomPins = {
         'pin': 22,
         'status': 0,
     },
-
     'room3light': {
         'pin': 5,
         'status': 0,

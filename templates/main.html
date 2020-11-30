@@ -127,7 +127,7 @@
          <img src="/static/images/airconon.png" class="utility">
          <div class="onoff">
             <a href="/room1aircon/on" class="button aircon_on_button_on">ON</a>
-            <a href="/room1aircon/off" class="button aircon_off_button_off" onclick="airconoff(3)">OFF</a>
+            <a href="/room1aircon/off" class="button aircon_off_button_off" onclick="airconoff(1)">OFF</a>
           </div>
           <div class="airconstats">
             <div class="settemp" id="settempwrapper1">
@@ -155,7 +155,7 @@
           {% else %}
           <img src="/static/images/airconoff.png" class="utility">
           <div class="onoff">
-              <a href="/room1aircon/on" class="button aircon_on_button_off">ON</a>
+              <a href="/room1aircon/on" class="button aircon_on_button_off" onclick="airconon(1)">ON</a>
               <a href="/room1aircon/off" class="button aircon_off_button_on" onclick="airconoff(1)">OFF</a>
           </div>
           {% endif %}
@@ -207,7 +207,7 @@
          {% if room2aircon == 1 %}
          <img src="/static/images/airconon.png" class="utility">
          <div class="onoff">
-            <a href="/room2aircon/on" class="button aircon_on_button_on">ON</a>
+            <a href="/room2aircon/on" class="button aircon_on_button_on" onclick="airconon(2)">ON</a>
             <a href="/room2aircon/off" class="button aircon_off_button_off" onclick="airconoff(2)">OFF</a>
           </div>
           <div class="airconstats">
@@ -236,7 +236,7 @@
           {% else %}
           <img src="/static/images/airconoff.png" class="utility">
           <div class="onoff">
-              <a href="/room2aircon/on" class="button aircon_on_button_off">ON</a>
+              <a href="/room2aircon/on" class="button aircon_on_button_off" onclick="airconon(2)">ON</a>
               <a href="/room2aircon/off" class="button aircon_off_button_on" onclick="airconoff(2)">OFF</a>
           </div>
           {% endif %}
@@ -288,7 +288,7 @@
          {% if room3aircon == 1 %}
          <img src="/static/images/airconon.png" class="utility">
          <div class="onoff">
-            <a href="/room3aircon/on" class="button aircon_on_button_on">ON</a>
+            <a href="/room3aircon/on" class="button aircon_on_button_on" onclick="airconon(3)">ON</a>
             <a href="/room3aircon/off" class="button aircon_off_button_off" onclick="airconoff(3)">OFF</a>
           </div>
           <div class="airconstats">
@@ -317,7 +317,7 @@
           {% else %}
           <img src="/static/images/airconoff.png" class="utility">
           <div class="onoff">
-              <a href="/room3aircon/on" class="button aircon_on_button_off">ON</a>
+              <a href="/room3aircon/on" class="button aircon_on_button_off" onclick="airconon(3)">ON</a>
               <a href="/room3aircon/off" class="button aircon_off_button_on" onclick="airconoff(3)">OFF</a>
           </div>
           {% endif %}

@@ -134,6 +134,35 @@ function airconoff(number){
 	sendControl("Room"+number, "OFF")
 }
 
+function airconon(number){
+	
+	var temp = gettempvalue(number);
+	condVal["tempVal"+number] = temp;
+	
+	var fan = getfanvalue(number);
+	if (fan.includes("fanlow")){
+		var fanvalue = "FANLOW";
+	}
+	else{
+		var fanvalue = "FANHIGH";
+	}
+	condVal["fanVal"+number] = fanvalue;
+	
+	var ac = getairconvalue(number);
+	var acsrc = "";
+	if(ac.charAt(ac.length-1) == 1){
+		acsrc = "COOL";
+	}if(ac.charAt(ac.length-1) == 2){
+		acsrc = "DRY";
+	}else{
+		acsrc = "FAN";
+	}
+	
+	condVal["mode"+number] = acsrc;
+	
+	sendControl("Room"+number, "ON_"+condVal["mode"+number]+"_"+condVal["fanVal"+number]+"_"+condVal["tempVal"+number]);
+}
+
 function getairconsignal(number){
 	var temp = document.getElementById("room"+number+"settemp");
 	var tempvalue = temp.value;
@@ -174,7 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
 				temp.style.visibility = 'hidden';
 				}
 			};
-			sendControl("Room"+i, "ON_"+getairconvalue(i)+"_"+getfanvalue(i)+"_"+gettempvalue(i));
 	} catch (e) {
 		console.log(`Room3 air con is off`);
 	}
