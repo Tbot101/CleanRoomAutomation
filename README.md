@@ -1,44 +1,54 @@
 # CleanRoomAutomation
 This project uses a flask backend and is connected to a electron front-end in order to create a 'desktop' app.
 
-Goal
-
+## Goal
 Use a raspberry pi in order to automate certain processes in a clean room
 1. Switching a light on and off
 2. Switching a fan on and off and controlling its power
 3. Controlling an air conditioner by using the raspberry pi to emit the infrared codes
     
-Using an electron js frontend which has a link to the local host website
-
-The logic used to communicate to the raspberry pi from the frontend is done through flask in python
-
-The dashboard is made dynamic through the use of javascript
+Using an Electron JS frontend which has a link to the local host website hosted by the Raspberry Pi. Flask is used to communicate logic and instructions to the Raspberry Pi from the frontend. The dashboard is made dynamic and responsive to user interactions through the use of vanilla javascript.
 
 ## Electron
 Run the Electron JS file which opens a desktop application. The app has one button on its homepage. This button has a link to the local host address of the Raspberry Pi. Therefore, when it is clicked it will open up the main dashboard for the Clean Rooms. However, for this to work the python file app.py has to be running as that opens up the flask website on the local host.
-![Electron JS](./pictures/ElectronJS)
-![Dashboard Example](./pictures/Dashboard)
+
+![Command Prompt](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/CommandPrompt.JPG?raw=true)
+Enter the Electron directory and run `electron .` to start the Electron JS app.
+
+![Electron JS](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/ElectronJS.JPG?raw=true)
+This is what opens up after the above command is executed. 
+
+![Dashboard Example](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/Dashboard.JPG?raw=true)
+After clicking on the "Enter Control Room" button the dashboard is displayed with access to all the Clean Rooms.
+
 
 ## How to change the logo
-HTML file main.html is stored under the templates folder. The images used in the dashboard such as the logo icon are saved under the '/static/images' folder. Change the icon image or change the image source under the main.html file. 
+HTML file main.html is stored under the templates folder. The images used in the dashboard such as the logo icon are saved under the `/static/images` folder. Change the icon image or change the image source under the main.html file. 
 
 ## How to add more rooms?
 
 ### Python:
-    ![python add more rooms](./pictures/
-    Need to add the additional roomPins
-    Give each a standardized name such as ‘roomXlight’
-    Requires the relevant GPIO pin which it is connected to and status as 0
+![Python App.py](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/AppPY.JPG?raw=true)
+1. Need to add the additional roomPins
+2. Give each a standardized name such as ‘roomXlight’
+3. Requires the relevant GPIO pin which it is connected to and status as 0
+4. For fans will also require PWM values
     
 ### HTML:
+![CreateHTML.py 1](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/CreateHTML1.JPG?raw=true)
 
-    Can use the ‘createhtml.py’ file which automatically creates the main.html file
-    Here the range of rooms needs to be specified in two places
+![CreateHTML.py 2](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/CreateHTML2.JPG?raw=true)
+
+1. Use the ‘createhtml.py’ file which automatically creates the main.html file
+2. Here the range of rooms needs to be specified in two places
+
 ### Javascript:
 
     Define number of rooms at the top of the file
 ### CSS:
-    Need to add .roomX{display:none;} when each new room is added
+![Styles.css](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/Styles.JPG?raw=true)
+
+1. Need to add `.roomX{display:none;}` when each new room is added
 
 
 ## Python app.py
@@ -52,9 +62,11 @@ These app routes are dynamic through the use of <> and as a result it can easily
     
 templateData = makeTemplateData() is required to send information about the status of each pin to the frontend 
 
+![Fan Form](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/AppPY_AirconSignal.JPG?raw=true)
 os.system is used to send the IR signals to the air conditioner. This is done by using XMLHttpRequests and concatenating all the settings of the air conditioner such as temperature, mode and fan speed.
 
-The fanslider PWM is received from the form submission. The pwm for the relevant fanslider is also updated which acts as a storage of latest pwm values. As a result, when the pin is switched off and then switched back on it can fetch the latest pwm value automatically
+![Fan Form](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/AppPY_FanForm.JPG?raw=true)
+The fanslider PWM is received from the form submission. The pwm for the relevant fanslider is also updated which acts as a storage of latest pwm values. As a result, when the pin is switched off and then switched back on it can fetch the latest pwm value automatically from the backend.
 
 
 ## Python createhtml.py
