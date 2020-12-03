@@ -11,6 +11,7 @@
 } */
 
 
+
 function room1function(){
 	var x = document.getElementsByClassName("room1");
 	var i;
@@ -27,15 +28,6 @@ function room1function(){
 	for (k = 0; k < z.length; k++) {
 	z[k].style.display = "none";
 	}
-	const room1button = document.getElementById("room1styles");
-	room1button.style.outline = "1px solid #0AFFEF";
-	const room2button = document.getElementById("room2styles");
-	room2button.style.outline = "none";
-	const room3button = document.getElementById("room3styles");
-	room3button.style.outline = "none";
-	//var value = document.getElementById("room1fanslider").value;
-	document.cookie = "room=room1;path=/;"
-	
 }
 
 function room2function(){
@@ -54,15 +46,6 @@ function room2function(){
 	for (k = 0; k < z.length; k++) {
 	z[k].style.display = "none";
 	}
-	const room1button = document.getElementById("room1styles");
-	room1button.style.outline = "none";
-	const room2button = document.getElementById("room2styles");
-	room2button.style.outline = "1px solid #0AFFEF";
-	const room3button = document.getElementById("room3styles");
-	room3button.style.outline = "none";
-	//var value = document.getElementById("room2fanslider").value;
-	document.cookie = "room=room2;path=/;"
-
 }
 
 function room3function(){
@@ -81,32 +64,7 @@ function room3function(){
 	for (k = 0; k < z.length; k++) {
 	z[k].style.display = "block";
 	}
-	const room1button = document.getElementById("room1styles");
-	room1button.style.outline = "none";
-	const room2button = document.getElementById("room2styles");
-	room2button.style.outline = "none";
-	const room3button = document.getElementById("room3styles");
-	room3button.style.outline = "1px solid #0AFFEF";
-	//var value = document.getElementById("room3fanslider").value;
-	document.cookie = "room=room3;path=/;"
-
 }
-
-
-/*
-var roomXfunction = {
-	1: room1function, 
-	2: room2function,
-	3: room3function
-};
-
-let onPageLoad = () =>
-{
-	Object.entries(roomXfunction).forEach(([key, value]) => {
-	if (window.location.href.includes(key)) {
-		roomXfunction[value]();
-};
-*/
 
 /*
 let body = document.body;
