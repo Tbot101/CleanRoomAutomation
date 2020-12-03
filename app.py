@@ -1,160 +1,130 @@
 import RPi.GPIO as GPIO
 from flask import Flask, render_template, request
-app = Flask(__name__, static_url_path='/static')
+from time import sleep
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import os
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-# define actuators GPIOs
-room1light = 23
-room1fan = 27  # 24
-room1aircon = 26  # 21
 
-room2light = 17
-room2fan = 24  # 27
-room2aircon = 22
+roomPins = {
+    # define actuators GPIOs
+    'room1light': {
+        'pin': 27,
+        'status': 0,
+    },
+    'room1fan': {
+        'pin': 12,
+        'status': 0,
+        'pwm': 0,
+    },
+    'room1aircon': {
+        'pin': 26,
+        'status': 0,
+    },
+    'room2light': {
+        'pin': 3,
+        'status': 0,
+    },
+    'room2fan': {
+        'pin': 13,
+        'status': 0,
+        'pwm': 0,
+    },
+    'room2aircon': {
+        'pin': 22,
+        'status': 0,
+    },
+    'room3light': {
+        'pin': 5,
+        'status': 0,
+    },
+    'room3fan': {
+        'pin': 6,
+        'status': 0,
+        'pwm': 0,
+    },
+    'room3aircon': {
+        'pin': 21,
+        'status': 0,
+    },
+}
 
-room3light = 5
-room3fan = 6
-room3aircon = 21  # 26
+for v in roomPins.values():
+    GPIO.setup(v['pin'], GPIO.OUT)
+    GPIO.output(v['pin'], GPIO.LOW)
 
-# initialize GPIO status variables
-room1lightSts = 0
-room1fanSts = 0
-room1airconSts = 0
+fans = []
 
-room2lightSts = 0
-room2fanSts = 0
-room2airconSts = 0
+for k, fan in roomPins.items():
+    if 'fan' in k:
+         fanX = GPIO.PWM(fan['pin'], 500)
+         fanX.start(0)
+         fans.append(fanX)
 
-room3lightSts = 0
-room3fanSts = 0
-room3airconSts = 0
+app = Flask(__name__, static_url_path='/static')
 
-# Define led pins as output
-GPIO.setup(room1light, GPIO.OUT)
-GPIO.setup(room1fan, GPIO.OUT)
-GPIO.setup(room1aircon, GPIO.OUT)
-
-GPIO.setup(room2light, GPIO.OUT)
-GPIO.setup(room2fan, GPIO.OUT)
-GPIO.setup(room2aircon, GPIO.OUT)
-
-GPIO.setup(room3light, GPIO.OUT)
-GPIO.setup(room3fan, GPIO.OUT)
-GPIO.setup(room3aircon, GPIO.OUT)
-
-# turn leds OFF
-GPIO.output(room1light, GPIO.LOW)
-GPIO.output(room1fan, GPIO.LOW)
-GPIO.output(room1aircon, GPIO.LOW)
-
-GPIO.output(room2light, GPIO.LOW)
-GPIO.output(room2fan, GPIO.LOW)
-GPIO.output(room2aircon, GPIO.LOW)
-
-GPIO.output(room3light, GPIO.LOW)
-GPIO.output(room3fan, GPIO.LOW)
-GPIO.output(room3aircon, GPIO.LOW)
-
+def makeTemplateData():
+    templateData = {}
+    for k, v in roomPins.items():
+        templateData[k] = v['status']
+    return templateData
 
 @app.route("/")
 def index():
-    # Read Sensors Status
-    room1lightSts = GPIO.input(room1light)
-    room1fanSts = GPIO.input(room1fan)
-    room1airconSts = GPIO.input(room1aircon)
-
-    room2lightSts = GPIO.input(room2light)
-    room2fanSts = GPIO.input(room2fan)
-    room2airconSts = GPIO.input(room2aircon)
-
-    room3lightSts = GPIO.input(room3light)
-    room3fanSts = GPIO.input(room3fan)
-    room3airconSts = GPIO.input(room3aircon)
-
-    templateData = {
-        'title': 'GPIO Output Status!',
-
-        'room1light': room1lightSts,
-        'room1fan': room1fanSts,
-        'room1aircon': room1airconSts,
-
-        'room2light': room2lightSts,
-        'room2fan': room2fanSts,
-        'room2aircon': room2airconSts,
-
-        'room3light': room3lightSts,
-        'room3fan': room3fanSts,
-        'room3aircon': room3airconSts,
-    }
+    templateData = makeTemplateData()
     return render_template('main.html', **templateData)
-
-# devicePair = {
-#     'room1light': room1light,
-#     'room2light': room2light,
-#     'room3light': room3light,
-#     'room1light': room1light,
-#     'room1light': room1light,
-#     'room1light': room1light,
-
-# }
 
 
 @app.route("/<deviceName>/<action>")
 def action(deviceName, action):
-    # if deviceName == 'room1light':
-    #     actuator = room1light
-    # if deviceName == 'room1fan':
-    #     actuator = room1fan
-    # if deviceName == 'room1aircon':
-    #     actuator = room1aircon
-
-    # if deviceName == 'room2light':
-    #     actuator = room2light
-    # if deviceName == 'room2fan':
-    #     actuator = room2fan
-    # if deviceName == 'room2aircon':
-    #     actuator = room2aircon
-
-    # if deviceName == 'room3light':
-    #     actuator = room3light
-    # if deviceName == 'room3fan':
-    #     actuator = room3fan
-    # if deviceName == 'room3aircon':
-    #     actuator = room3aircon
-    actuator = eval(deviceName)
+    actuator = roomPins[deviceName]['pin']
 
     if action == "on":
-        GPIO.output(actuator, GPIO.HIGH)
-    if action == "off":
-        GPIO.output(actuator, GPIO.LOW)
+        if 'light' in deviceName:
+            GPIO.output(actuator, GPIO.HIGH)
+        roomPins[deviceName]['status'] = 1
+        if 'fan' in deviceName:
+            a = int(deviceName[4])-1
+            fanvalue = roomPins[deviceName]['pwm']
+            fans[a].ChangeDutyCycle(float(fanvalue))
+    elif action == "off":
+        if 'light' in deviceName:
+            GPIO.output(actuator, GPIO.LOW)
+        if 'fan' in deviceName:
+            numberstr = deviceName[4]
+            i = int(numberstr) - 1
+            fans[i].ChangeDutyCycle(0)
+        roomPins[deviceName]['status'] = 0
+        
+    templateData = makeTemplateData()
 
-    room1lightSts = GPIO.input(room1light)
-    room1fanSts = GPIO.input(room1fan)
-    room1airconSts = GPIO.input(room1aircon)
+    return render_template('main.html', **templateData)
 
-    room2lightSts = GPIO.input(room2light)
-    room2fanSts = GPIO.input(room2fan)
-    room2airconSts = GPIO.input(room2aircon)
+@app.route("/fanslider/<string:room>", methods=["POST"])
+def fanslider(room):
+    numberstr = room[-1]
+    # Get slider Values
+    slider = request.form["Room_"+numberstr+"_Fan_Slider"]
+    deviceName = "room"+numberstr+"fan"
+    roomPins[deviceName]['pwm'] = slider
+    # Change duty cycle
+    numberint = int(numberstr)
+    i = numberint - 1
+    fans[i].ChangeDutyCycle(float(slider))
+    # Give servo some time to move
+    sleep(1)
+    templateData = makeTemplateData()
+    return render_template('main.html', **templateData)
 
-    room3lightSts = GPIO.input(room3light)
-    room3fanSts = GPIO.input(room3fan)
-    room3airconSts = GPIO.input(room3aircon)
-
-    templateData = {
-        'room1light': room1lightSts,
-        'room1fan': room1fanSts,
-        'room1aircon': room1airconSts,
-
-        'room2light': room2lightSts,
-        'room2fan': room2fanSts,
-        'room2aircon': room2airconSts,
-
-        'room3light': room3lightSts,
-        'room3fan': room3fanSts,
-        'room3aircon': room3airconSts,
-    }
+@app.route("/aircon/<string:room>/<string:forName>", methods=["GET"])
+def aircon(room, forName):
+    if "ON_FAN" in forName:
+        forName = forName[:-3]
+    print(forName)
+    os.system("irsend SEND_ONCE MITSUBISHI "+forName)
+    templateData = makeTemplateData()
     return render_template('main.html', **templateData)
 
 

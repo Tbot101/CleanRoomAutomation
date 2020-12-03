@@ -1,239 +1,377 @@
-:root {
-  --style-block: block;
-  --style-none: none;
+:root{
+	--main-box-shadow: -2px 2px 5px 2px #707070, 2px -2px 5px 2px #000000;
 }
+.on_button_on{
+	color: #0AFFEF;
+}
+.on_button_off{
+	color: #8A959D;
+}
+.off_button_on{
+	color: #E32626;
+}
+.off_button_off{
+	color: #8A959D;
+}
+
+.room1{
+	display: block;
+}
+.room2{
+	display: none;
+}
+.room3{
+	display: none;
+}
+
 body {
-  background: #243441;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  text-align: center;
+	background: #243441;
+	overflow-x: hidden;
+	/*overflow-y: hidden;*/
+	text-align: center;
 }
-.grid {
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 100%;
+.grid{
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-rows: 100%;
 }
-h1 {
-  font-family: "Helvetica", sans-serif;
-  color: white;
-  width: 300px;
+h1{
+	font-family: "Helvetica", sans-serif;
+	color: white;
+	width: 300px;
 }
-h2 {
-  color: white;
-  font-family: "Helvetica", sans-serif;
-  font: 15;
-  flex: flex;
+h2{
+    color: white;
+    font-family: "Helvetica", sans-serif;
+    font: 15;
+    flex: flex;
 }
-h3 {
-  color: white;
-  width: auto;
-  text-align: center;
+h3{
+	color: white;	
+	width: auto;
+	text-align: center;
 }
-.left-column {
-  grid-column: 1;
-  grid-row: 1;
-  /*border: 1px solid;
+.left-column{
+	grid-column:1;
+	grid-row: 1;
+	/*border: 1px solid;
 	border-color: #707070;*/
-  box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.5);
+	box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.5)
 }
-.logo {
-  grid-column: 1;
-  width: 60%;
+.logo{
+	grid-column: 1;
+	width: 60%;
 }
-.status {
-  align-items: center;
+.status{
+	align-items: center;
 }
-.right-column {
-  grid-column: 2 / span 3;
-  grid-row: 1 / span 2;
+.right-column{
+	grid-column: 2 / span 3;
+	grid-row: 1 / span 2;
 }
-.light {
-  grid-column: 2;
-  grid-row: 1;
+.light{
+	grid-column: 2;
+	grid-row:1;
 }
-.fan {
-  grid-column: 3;
-  grid-row: 1;
+.fan{
+	grid-column: 3;
+	grid-row:1;
 }
-.aircon {
-  grid-column: 4;
-  grid-row: 1;
+.aircon{
+	grid-column: 4;
+	grid-row:1;
+	
 }
-.button {
-  text-decoration: none;
+.button{
+	text-decoration: none;
 }
-.onoff {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  outline-style: solid;
-  outline-width: 0.5;
-  outline-color: #5c5c5c;
-  padding: 10px;
-  margin: 20px;
-  box-shadow: 4px -4px 10px 5px rgba(0, 0, 0, 0.5);
-}
-
-.utility {
-  width: 50%;
-}
-
-#room1_light_on_button_on {
-  color: #0affef;
-}
-#room1_light_on_button_off {
-  color: #8a959d;
-}
-#room1_light_off_button_on {
-  color: #e32626;
-}
-#room1_light_off_button_off {
-  color: #8a959d;
-}
-#room1_fan_on_button_on {
-  color: #0affef;
-}
-#room1_fan_on_button_off {
-  color: #8a959d;
-}
-#room1_fan_off_button_on {
-  color: #e32626;
-}
-#room1_fan_off_button_off {
-  color: #8a959d;
-}
-#room1_aircon_on_button_on {
-  color: #0affef;
-}
-#room1_aircon_on_button_off {
-  color: #8a959d;
-}
-#room1_aircon_off_button_on {
-  color: #e32626;
-}
-#room1_aircon_off_button_off {
-  color: #8a959d;
+.onoff{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	border-style: solid;
+	border-width: 0.5;
+	border-color: #5C5C5C;
+	padding: 10px;
+	margin: 20px;
+	/*box-shadow: 4px -4px 10px 5px rgba(0,0,0,0.5);*/
+	box-shadow: var(--main-box-shadow);
+	border-radius: 20px;
 }
 
-#room2_light_on_button_on {
-  color: #0affef;
+.utility{
+	width:40%;
 }
-#room2_light_on_button_off {
-  color: #8a959d;
+.room{
+	align-items:center;
 }
-#room2_light_off_button_on {
-  color: #e32626;
+.utilityroomsensor{
+	width:25%;
 }
-#room2_light_off_button_off {
-  color: #8a959d;
+.roomtitle{
+	color: #8A959D;
+	font-size: 15px;
 }
-#room2_fan_on_button_on {
-  color: #0affef;
+.roomsensor{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: no-wrap;
+	justify-content: space-around;
+	align-items: center;
 }
-#room2_fan_on_button_off {
-  color: #8a959d;
+.room{
+	border-style: solid;
+	border-width: 0.5;
+	border-color: #5C5C5C;
+	padding: 7px;
+	margin: 20px;
+	box-shadow: var(--main-box-shadow);
+	border-radius: 20px;	
+	background: #243441;
+	cursor: pointer;
 }
-#room2_fan_off_button_on {
-  color: #e32626;
+.status{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 }
-#room2_fan_off_button_off {
-  color: #8a959d;
-}
-#room2_aircon_on_button_on {
-  color: #0affef;
-}
-#room2_aircon_on_button_off {
-  color: #8a959d;
-}
-#room2_aircon_off_button_on {
-  color: #e32626;
-}
-#room2_aircon_off_button_off {
-  color: #8a959d;
-}
-
-#room3_light_on_button_on {
-  color: #0affef;
-}
-#room3_light_on_button_off {
-  color: #8a959d;
-}
-#room3_light_off_button_on {
-  color: #e32626;
-}
-#room3_light_off_button_off {
-  color: #8a959d;
-}
-#room3_fan_on_button_on {
-  color: #0affef;
-}
-#room3_fan_on_button_off {
-  color: #8a959d;
-}
-#room3_fan_off_button_on {
-  color: #e32626;
-}
-#room3_fan_off_button_off {
-  color: #8a959d;
-}
-#room3_aircon_on_button_on {
-  color: #0affef;
-}
-#room3_aircon_on_button_off {
-  color: #8a959d;
-}
-#room3_aircon_off_button_on {
-  color: #e32626;
-}
-#room3_aircon_off_button_off {
-  color: #8a959d;
+.roomnumber{
+	box-shadow: var(--main-box-shadow);
+	color: #8A959D;
+	padding: 25px;
+	margin: 40px;
+	font-size: 25px;
+	border-radius: 20px;
+	margin-top: 120px;
+	border-style: solid;
+	border-width: 0.5;
+	border-color: #5C5C5C;
 }
 
-.room {
-  align-items: center;
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
 }
-.utilityroomsensor {
-  width: 25%;
+
+.decincbutton{
+	width:20%;
+	padding: 20px;
 }
-.roomtitle {
-  color: #8a959d;
+
+/* The slider itself */
+.slider {
+	-webkit-appearance: none;  /* Override default CSS styles */
+	appearance: none;
+	border-radius: 25px;
+	width: 80%; /* Full-width */
+	height: 25px; /* Specified height */
+	background: #243441; /* Blue background */
+	border-style: solid;
+	border-width: 0.5;
+	border-color: #5C5C5C;
+	opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+	-webkit-transition: .2s; /* 0.2 seconds transition on hover */
+	transition: opacity .2s;
 }
-.roomsensor {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: no-wrap;
-  justify-content: space-around;
-  align-items: center;
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
 }
-.room {
-  outline-style: solid;
-  outline-width: 0.5;
-  outline-color: #5c5c5c;
-  padding: 7px;
-  margin: 20px;
-  box-shadow: 4px -4px 10px 5px rgba(0, 0, 0, 0.2);
-  background: #243441;
-  cursor: pointer;
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px;  /*Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #0AFFEF; /* Blue background */
+  border-radius: 25px;
+  cursor: pointer; /* Cursor on hover */
 }
-.room1 {
-  display: block;
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #0AFFEF; /* Blue background */
+  cursor: pointer; /* Cursor on hover */
 }
-.room2 {
-  display: none;
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
-.room3 {
-  display: none;
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
-.status {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+
+.airconstats{
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 50% 50%;
 }
-.roomnumber {
-  box-shadow: 2px -2px 20px 2px rgba(0, 0, 0, 0.3);
-  color: #8a959d;
-  padding: 25px;
-  margin: 40px;
-  margin-top: 100px;
+
+
+.settemp{
+	grid-column: 1;
+	grid-row:1;
+	border-style: solid;
+	border-width: 0.5;
+	border-color: #5C5C5C;
+	padding: 10px;
+	margin: 10px;
+	box-shadow: var(--main-box-shadow);
+	border-radius: 20px;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 50% 50%;
+	justify-items: center;
+	align-items: center;
+}
+
+.settempheader{
+	color: #ffffff;
+	font-size: 15px;
+	grid-column: 1;
+	grid-row: 1;
+}
+
+.qty{
+	background:#243441;
+	color: #0AFFEF;
+	border: none;
+	width: 28px;
+	height: 28px;
+	font-size:25px;
+	grid-column: 1;
+	grid-row: 2;
+	margin-right:45px;
+	margin-left:15px;
+}
+
+.qty-plus{
+	grid-column: 2;
+	grid-row: 1;
+}
+
+.qty-minus{
+	grid-column: 2;
+	grid-row: 2 ;
+}
+
+.settempbutton{
+	width: 70%;
+}
+
+
+.degrees{
+	color:#0AFFEF;
+	font-size: 25px;
+	grid-column: 1;
+	grid-row: 2;
+	margin-left: 25px;
+}
+
+.fanspeed{
+	grid-column: 1;
+	grid-row:2;
+	border-style: solid;
+	border-width: 0.5;
+	border-color: #5C5C5C;
+	padding: 10px;
+	margin: 10px;
+	box-shadow: var(--main-box-shadow);
+	border-radius: 20px;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 50% 50%;
+	justify-content: center;
+	justify-items: center;
+	align-content: center;
+}
+
+.fanspeedimage{
+	width: 95%;
+	cursor: default;
+	grid-column: 1;
+	grid-row: 2;
+}
+
+.fanspeedbuttonhigh{
+	grid-column: 2;
+	grid-row: 1;
+	width:70%;
+}
+
+.fanspeedbuttonlow{
+	grid-column: 2;
+	grid-row: 2;
+	width:70%;
+}
+
+.fanspeedheader{
+	color: #ffffff;
+	font-size: 15px;
+	grid-column: 1;
+	grid-row: 1;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.airconmode{
+	display:flex;
+	flex-direction: column;
+	background: none;
+	text-align: center;
+}
+
+.airconmodebuttonwrapper{
+	grid-column: 2;
+	grid-row:1 / span 2;
+	border-style: solid;
+	border-width: 0.5;
+	border-color: #5C5C5C;
+	padding: 10px;
+	margin: 10px;
+	box-shadow: var(--main-box-shadow);
+	border-radius: 20px;
+	text-align: center;
+}
+
+.airconmodebutton{
+	border: none;
+	color: #8A959D;
+	background: none;
+	font-size:15px;
+	margin: 5px;
+	border-top: 1px solid #5C5C5C;
+	cursor: pointer;
+	margin: 10px 20px 10px 20px;
+	padding-top: 20px;
+}
+
+.airconmodeclicked{
+	color: #0AFFEF;
+}
+
+.airconmodeheader{
+	color: #ffffff;
+	font-size: 15px;
+}
+
+.onoffwrapper{
+	grid-column: 1;
+	grid-row:1;
+}
+
+*:focus{
+	outline: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
 }
