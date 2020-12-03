@@ -84,14 +84,14 @@
         {% if room1light == 1 %}
         <img src="/static/images/lighton.png" class="utility">
         <div class="onoff">
-          <a href="/room1light/on"class="button light_on_button_on">ON</a>
-          <a href="/room1light/off" class="button light_off_button_off">OFF</a>
+          <a href="/room1light/on"class="button on_button_on">ON</a>
+          <a href="/room1light/off" class="button off_button_off">OFF</a>
         </div>
         {% else %}
         <img src="/static/images/lightoff.png" class="utility">
         <div class="onoff">
-          <a href="/room1light/on" class="button light_on_button_off">ON</a>
-          <a href="/room1light/off" class="button light_off_button_on">OFF</a>
+          <a href="/room1light/on" class="button on_button_off">ON</a>
+          <a href="/room1light/off" class="button off_button_on">OFF</a>
         </div>
         {% endif %}
         <div class="roomnumber">ROOM 1</div>
@@ -102,8 +102,8 @@
           {% if room1fan == 1 %}
           <img src="/static/images/fanon.png" class="utility">
           <div class="onoff">
-            <a href="/room1fan/on" class="button fan_on_button_on">ON</a>
-            <a href="/room1fan/off" class="button fan_off_button_off">OFF</a>
+            <a href="/room1fan/on" class="button on_button_on">ON</a>
+            <a href="/room1fan/off" class="button off_button_off">OFF</a>
           </div>
           <div>
             <form method="POST" action="/fanslider/room1" id="room1fanform" class="slidecontainer" onsubmit="setroomValue(1)">
@@ -115,8 +115,8 @@
           {% else %}
           <img src="/static/images/fanoff.png" class="utility">
           <div class="onoff">
-            <a href="/room1fan/on" class="button fan_on_button_off">ON</a>
-            <a href="/room1fan/off" class="button fan_off_button_on">OFF</a>
+            <a href="/room1fan/on" class="button on_button_off">ON</a>
+            <a href="/room1fan/off" class="button off_button_on">OFF</a>
           </div>
           {% endif %}
         </div>
@@ -126,8 +126,8 @@
          {% if room1aircon == 1 %}
          <img src="/static/images/airconon.png" class="utility">
          <div class="onoff">
-            <a href="/room1aircon/on" class="button aircon_on_button_on">ON</a>
-            <a href="/room1aircon/off" class="button aircon_off_button_off" onclick="airconoff(1)">OFF</a>
+            <a href="/room1aircon/on" class="button on_button_on">ON</a>
+            <a href="/room1aircon/off" class="button off_button_off" onclick="airconoff(1)">OFF</a>
           </div>
           <div class="airconstats">
             <div class="settemp" id="settempwrapper1">
@@ -155,8 +155,8 @@
           {% else %}
           <img src="/static/images/airconoff.png" class="utility">
           <div class="onoff">
-              <a href="/room1aircon/on" class="button aircon_on_button_off" onclick="airconon(1)">ON</a>
-              <a href="/room1aircon/off" class="button aircon_off_button_on" onclick="airconoff(1)">OFF</a>
+              <a href="/room1aircon/on" class="button on_button_off" onclick="airconon(1)">ON</a>
+              <a href="/room1aircon/off" class="button off_button_on" onclick="airconoff(1)">OFF</a>
           </div>
           {% endif %}
       </div>
@@ -165,14 +165,14 @@
         {% if room2light == 1 %}
         <img src="/static/images/lighton.png" class="utility">
         <div class="onoff">
-          <a href="/room2light/on"class="button light_on_button_on">ON</a>
-          <a href="/room2light/off" class="button light_off_button_off">OFF</a>
+          <a href="/room2light/on"class="button on_button_on">ON</a>
+          <a href="/room2light/off" class="button off_button_off">OFF</a>
         </div>
         {% else %}
         <img src="/static/images/lightoff.png" class="utility">
         <div class="onoff">
-          <a href="/room2light/on" class="button light_on_button_off">ON</a>
-          <a href="/room2light/off" class="button light_off_button_on">OFF</a>
+          <a href="/room2light/on" class="button on_button_off">ON</a>
+          <a href="/room2light/off" class="button off_button_on">OFF</a>
         </div>
         {% endif %}
         <div class="roomnumber">ROOM 2</div>
@@ -183,8 +183,8 @@
           {% if room2fan == 1 %}
           <img src="/static/images/fanon.png" class="utility">
           <div class="onoff">
-            <a href="/room2fan/on" class="button fan_on_button_on">ON</a>
-            <a href="/room2fan/off" class="button fan_off_button_off">OFF</a>
+            <a href="/room2fan/on" class="button on_button_on">ON</a>
+            <a href="/room2fan/off" class="button off_button_off">OFF</a>
           </div>
           <div>
             <form method="POST" action="/fanslider/room2" id="room2fanform" class="slidecontainer" onsubmit="setroomValue(2)">
@@ -196,8 +196,8 @@
           {% else %}
           <img src="/static/images/fanoff.png" class="utility">
           <div class="onoff">
-            <a href="/room2fan/on" class="button fan_on_button_off">ON</a>
-            <a href="/room2fan/off" class="button fan_off_button_on">OFF</a>
+            <a href="/room2fan/on" class="button on_button_off">ON</a>
+            <a href="/room2fan/off" class="button off_button_on">OFF</a>
           </div>
           {% endif %}
         </div>
@@ -207,8 +207,8 @@
          {% if room2aircon == 1 %}
          <img src="/static/images/airconon.png" class="utility">
          <div class="onoff">
-            <a href="/room2aircon/on" class="button aircon_on_button_on" onclick="airconon(2)">ON</a>
-            <a href="/room2aircon/off" class="button aircon_off_button_off" onclick="airconoff(2)">OFF</a>
+            <a href="/room2aircon/on" class="button on_button_on" onclick="airconon(2)">ON</a>
+            <a href="/room2aircon/off" class="button off_button_off" onclick="airconoff(2)">OFF</a>
           </div>
           <div class="airconstats">
             <div class="settemp" id="settempwrapper2">
@@ -236,8 +236,8 @@
           {% else %}
           <img src="/static/images/airconoff.png" class="utility">
           <div class="onoff">
-              <a href="/room2aircon/on" class="button aircon_on_button_off" onclick="airconon(2)">ON</a>
-              <a href="/room2aircon/off" class="button aircon_off_button_on" onclick="airconoff(2)">OFF</a>
+              <a href="/room2aircon/on" class="button on_button_off" onclick="airconon(2)">ON</a>
+              <a href="/room2aircon/off" class="button off_button_on" onclick="airconoff(2)">OFF</a>
           </div>
           {% endif %}
       </div>
@@ -246,14 +246,14 @@
         {% if room3light == 1 %}
         <img src="/static/images/lighton.png" class="utility">
         <div class="onoff">
-          <a href="/room3light/on"class="button light_on_button_on">ON</a>
-          <a href="/room3light/off" class="button light_off_button_off">OFF</a>
+          <a href="/room3light/on"class="button on_button_on">ON</a>
+          <a href="/room3light/off" class="button off_button_off">OFF</a>
         </div>
         {% else %}
         <img src="/static/images/lightoff.png" class="utility">
         <div class="onoff">
-          <a href="/room3light/on" class="button light_on_button_off">ON</a>
-          <a href="/room3light/off" class="button light_off_button_on">OFF</a>
+          <a href="/room3light/on" class="button on_button_off">ON</a>
+          <a href="/room3light/off" class="button off_button_on">OFF</a>
         </div>
         {% endif %}
         <div class="roomnumber">ROOM 3</div>
@@ -264,8 +264,8 @@
           {% if room3fan == 1 %}
           <img src="/static/images/fanon.png" class="utility">
           <div class="onoff">
-            <a href="/room3fan/on" class="button fan_on_button_on">ON</a>
-            <a href="/room3fan/off" class="button fan_off_button_off">OFF</a>
+            <a href="/room3fan/on" class="button on_button_on">ON</a>
+            <a href="/room3fan/off" class="button off_button_off">OFF</a>
           </div>
           <div>
             <form method="POST" action="/fanslider/room3" id="room3fanform" class="slidecontainer" onsubmit="setroomValue(3)">
@@ -277,8 +277,8 @@
           {% else %}
           <img src="/static/images/fanoff.png" class="utility">
           <div class="onoff">
-            <a href="/room3fan/on" class="button fan_on_button_off">ON</a>
-            <a href="/room3fan/off" class="button fan_off_button_on">OFF</a>
+            <a href="/room3fan/on" class="button on_button_off">ON</a>
+            <a href="/room3fan/off" class="button off_button_on">OFF</a>
           </div>
           {% endif %}
         </div>
@@ -288,8 +288,8 @@
          {% if room3aircon == 1 %}
          <img src="/static/images/airconon.png" class="utility">
          <div class="onoff">
-            <a href="/room3aircon/on" class="button aircon_on_button_on" onclick="airconon(3)">ON</a>
-            <a href="/room3aircon/off" class="button aircon_off_button_off" onclick="airconoff(3)">OFF</a>
+            <a href="/room3aircon/on" class="button on_button_on" onclick="airconon(3)">ON</a>
+            <a href="/room3aircon/off" class="button off_button_off" onclick="airconoff(3)">OFF</a>
           </div>
           <div class="airconstats">
             <div class="settemp" id="settempwrapper3">
@@ -317,8 +317,8 @@
           {% else %}
           <img src="/static/images/airconoff.png" class="utility">
           <div class="onoff">
-              <a href="/room3aircon/on" class="button aircon_on_button_off" onclick="airconon(3)">ON</a>
-              <a href="/room3aircon/off" class="button aircon_off_button_on" onclick="airconoff(3)">OFF</a>
+              <a href="/room3aircon/on" class="button on_button_off" onclick="airconon(3)">ON</a>
+              <a href="/room3aircon/off" class="button off_button_on" onclick="airconoff(3)">OFF</a>
           </div>
           {% endif %}
       </div>

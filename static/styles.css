@@ -1,40 +1,16 @@
 :root{
 	--main-box-shadow: -2px 2px 5px 2px #707070, 2px -2px 5px 2px #000000;
 }
-.light_on_button_on{
+.on_button_on{
 	color: #0AFFEF;
 }
-.light_on_button_off{
+.on_button_off{
 	color: #8A959D;
 }
-.light_off_button_on{
+.off_button_on{
 	color: #E32626;
 }
-.light_off_button_off{
-	color: #8A959D;
-}
-.fan_on_button_on{
-	color: #0AFFEF;
-}
-.fan_on_button_off{
-	color: #8A959D;
-}
-.fan_off_button_on{
-	color: #E32626;
-}
-.fan_off_button_off{
-	color: #8A959D;
-}
-.aircon_on_button_on{
-	color: #0AFFEF;
-}
-.aircon_on_button_off{
-	color: #8A959D;
-}
-.aircon_off_button_on{
-	color: #E32626;
-}
-.aircon_off_button_off{
+.off_button_off{
 	color: #8A959D;
 }
 
@@ -299,12 +275,6 @@ input[type=number] {
 	grid-row: 2;
 	margin-left: 25px;
 }
-
-/*	grid-column:2;
-	grid-row:1 span 2;
-	display:flex;
-	flex-direction: column;
-	justify-content: space-between; */
 
 .fanspeed{
 	grid-column: 1;

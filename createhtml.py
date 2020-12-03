@@ -143,6 +143,6 @@ c = ('''
 </html>
 ''')
 
-with open('/home/pi/Documents/GitHub/CleanRoomAutomation/main.html', 'w') as newHTMLFile:
+with open('/home/pi/Documents/GitHub/CleanRoomAutomation/newmain.html', 'w') as newHTMLFile:
     newHTMLFile.write(a + sidebar + b + main + c)
     newHTMLFile.close()
