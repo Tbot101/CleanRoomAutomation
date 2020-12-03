@@ -1,5 +1,5 @@
 # CleanRoomAutomation
-This project uses a flask backend and is connected to a electron front-end in order to create a 'desktop' app.
+This project uses a flask backend and is connected to a electron front-end in order to create a 'desktop' app. Note: for the python file to run it must be done on a Raspberry Pi as the RPi.GPIO is only available on the Raspberry Pi. 
 
 ## Goal
 Use a raspberry pi in order to automate certain processes in a clean room
@@ -47,8 +47,10 @@ HTML file main.html is stored under the templates folder. The images used in the
 2. Here the range of rooms needs to be specified in two places
 
 ### Javascript:
+![Control JS](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/ControlJS.JPG?raw=true)
 
-    Define number of rooms at the top of the file
+Define number of rooms at the top of the file
+
 ### CSS:
 ![Styles.css](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/Styles.JPG?raw=true)
 
