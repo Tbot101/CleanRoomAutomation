@@ -85,3 +85,6 @@ After the python file is run there will be an HTML file as output called `newmai
 
 ## styles.css
 Houses all the styling rules of the dashboard/GUI. There is one variable called `—main-box-shadow` which can be used to change all box shadows at once. There is a mixture of grid displays and flex displays as well as subgrids to make the design of the dashboard intuitive and appealing to the user. The custom slider CSS was also introduced as it is more user friendly. `overflow-x: hidden` to prevent side scroll while using interface.
+
+## Javascript control.js
+Has dynamic functions that take in input usually as ‘number’ or ‘room’ in order to manipulate DOM elements. Uses local storage extensively in order to save the latest user inputs in terms of fan pwm, aircon settings so that when the page is refreshed or if the app goes to another url endpoint the same information is still displayed. Uses cookies to swap out which room is being displayed. Furthermore, the information state for each aircon setting is saved in `condVal`. `condVal` is used to send information to the python front end in order to send IR signals.
