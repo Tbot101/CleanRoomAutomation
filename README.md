@@ -49,17 +49,16 @@ HTML file main.html is stored under the templates folder. The images used in the
 ### Javascript:
 ![Control JS](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/ControlJS.JPG?raw=true)
 
-Define number of rooms at the top of the file
+Define number of rooms at the top of the file. The Javascript is dynamic and uses the input for each function to make the relevant changes.
 
 ### CSS:
 ![Styles.css](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/Styles.JPG?raw=true)
 
-1. Need to add `.roomX{display:none;}` when each new room is added
-
+Need to add `.roomX{display:none;}` when each new room is added.
 
 ## Python app.py
 
-Different app routes that correspond to url endpoints through which flask can extract data from the frontend. It uses this data to send instructions to the raspberry pi
+Different app routes that correspond to url endpoints through which flask can extract data from the frontend. It uses this data to send instructions to the Raspberry Pi.
 
 These app routes are dynamic through the use of <> and as a result it can easily scale up when there is more information or if different but similar routes added such as additional rooms. An example being `/<deviceName>/<action>`
     
@@ -67,11 +66,11 @@ These app routes are dynamic through the use of <> and as a result it can easily
 
 ![Fan Form](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/AppPY_AirconSignal.JPG?raw=true)
 
-os.system is used to send the IR signals to the air conditioner. This is done by using XMLHttpRequests and concatenating all the settings of the air conditioner such as temperature, mode and fan speed.
+os.system is used to send the IR signals to the air conditioner. This is done by using XMLHttpRequests and concatenating all the settings of the air conditioner such as temperature, mode and fan speed. The Flask backend reads this using URL endpoints and sends a command to the Raspberry Pi. The IR emitter then emits the relevant signal.
 
 ![Fan Form](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/AppPY_FanForm.JPG?raw=true)
 
-The fanslider PWM is received from the form submission on the frontend. The pwm for the relevant fanslider is also updated which acts as a storage of latest pwm values. As a result, when the pin is switched off and then switched back on it can fetch the latest pwm value automatically from the backend. 
+The fanslider PWM is received from the form submission on the frontend. The pwm for the relevant fanslider is also updated which acts as a storage of latest pwm values. As a result, when the pin is switched off and then switched back on it can fetch the latest pwm value automatically from the backend making the interface dynamic.
 
 
 ## Python createhtml.py
@@ -81,12 +80,8 @@ This file automatically generates the HTML when more rooms are added. It is dyna
 For example:
 `Onclick=“airconoff(CHANGENUMBER)”`
 Becomes `airconoff(1)`, `airconoff(2)` and so on for each room
-After the python file is run there is an HTML file outputted also called `newmain.html`. The contents of this file should be copied over to ‘main.html’ inside the templates folder
+
+After the python file is run there will be an HTML file as output called `newmain.html`. The contents of this file should be copied over to ‘main.html’ inside the templates folder. This will replace and update the GUI and display the desired number of rooms. Remember to similarly change the rest of the files.
 
 ## styles.css
-Houses all the styling rules of the dashboard/GUI
-One variable called `—main-box-shadow` which can be used to change all box shadows at once
-More variables can be implemented to make the code clean and easy to read
-Overflow x is hidden to prevent having to scroll sideways
-A mixture of grid and flex displays as well as subgrids.
-Custom slider design as it is visually appealing 
+Houses all the styling rules of the dashboard/GUI. There is one variable called `—main-box-shadow` which can be used to change all box shadows at once. There is a mixture of grid displays and flex displays as well as subgrids to make the design of the dashboard intuitive and appealing to the user. The custom slider CSS was also introduced as it is more user friendly. `overflow-x: hidden` to prevent side scroll while using interface.
