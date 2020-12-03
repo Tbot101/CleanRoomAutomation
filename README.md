@@ -13,12 +13,15 @@ Using an Electron JS frontend which has a link to the local host website hosted 
 Run the Electron JS file which opens a desktop application. The app has one button on its homepage. This button has a link to the local host address of the Raspberry Pi. Therefore, when it is clicked it will open up the main dashboard for the Clean Rooms. However, for this to work the python file app.py has to be running as that opens up the flask website on the local host.
 
 ![Command Prompt](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/CommandPrompt.JPG?raw=true)
+
 Enter the Electron directory and run `electron .` to start the Electron JS app.
 
 ![Electron JS](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/ElectronJS.JPG?raw=true)
+
 This is what opens up after the above command is executed. 
 
 ![Dashboard Example](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/Dashboard.JPG?raw=true)
+
 After clicking on the "Enter Control Room" button the dashboard is displayed with access to all the Clean Rooms.
 
 
@@ -29,6 +32,7 @@ HTML file main.html is stored under the templates folder. The images used in the
 
 ### Python:
 ![Python App.py](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/AppPY.JPG?raw=true)
+
 1. Need to add the additional roomPins
 2. Give each a standardized name such as ‘roomXlight’
 3. Requires the relevant GPIO pin which it is connected to and status as 0
@@ -53,38 +57,33 @@ HTML file main.html is stored under the templates folder. The images used in the
 
 ## Python app.py
 
-Different app routes that correspond to url endpoints through which flask can extract data from the frontend 
+Different app routes that correspond to url endpoints through which flask can extract data from the frontend. It uses this data to send instructions to the raspberry pi
 
-It uses this data to send instructions to the raspberry pi
-
-These app routes are dynamic through the use of <> and as a result it can easily scale up when there is more information or if different but similar routes added such as additional rooms
-    An example being "/<deviceName>/<action>”
+These app routes are dynamic through the use of <> and as a result it can easily scale up when there is more information or if different but similar routes added such as additional rooms. An example being `/<deviceName>/<action>`
     
-templateData = makeTemplateData() is required to send information about the status of each pin to the frontend 
+`templateData = makeTemplateData()` is required to send information about the status of each pin to the frontend 
 
 ![Fan Form](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/AppPY_AirconSignal.JPG?raw=true)
+
 os.system is used to send the IR signals to the air conditioner. This is done by using XMLHttpRequests and concatenating all the settings of the air conditioner such as temperature, mode and fan speed.
 
 ![Fan Form](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/AppPY_FanForm.JPG?raw=true)
-The fanslider PWM is received from the form submission. The pwm for the relevant fanslider is also updated which acts as a storage of latest pwm values. As a result, when the pin is switched off and then switched back on it can fetch the latest pwm value automatically from the backend.
+
+The fanslider PWM is received from the form submission on the frontend. The pwm for the relevant fanslider is also updated which acts as a storage of latest pwm values. As a result, when the pin is switched off and then switched back on it can fetch the latest pwm value automatically from the backend. 
 
 
 ## Python createhtml.py
 
-This file automatically generates the HTML when more rooms are added
-
-It is dynamic and changes the input to each function accordingly
-
-It uses regex in python to change the keyword ‘CHANGENUMBER’ to the corresponding room number. 
+This file automatically generates the HTML when more rooms are added. It is dynamic and changes the input to each function accordingly by using regex in python to change the keyword `CHANGENUMBER` to the corresponding room number. 
 
 For example:
-Onclick=“airconoff(CHANGENUMBER)”
-Becomes airconoff(1), airconoff(2) and so on for each room
-After the python file is run there is an HTML file outputted also called newmain.html. The contents of this file should be copied over to ‘main.html’ inside the templates folder
+`Onclick=“airconoff(CHANGENUMBER)”`
+Becomes `airconoff(1)`, `airconoff(2)` and so on for each room
+After the python file is run there is an HTML file outputted also called `newmain.html`. The contents of this file should be copied over to ‘main.html’ inside the templates folder
 
 ## styles.css
 Houses all the styling rules of the dashboard/GUI
-One variable called “—main-box-shadow” which can be used to change all box shadows at once
+One variable called `—main-box-shadow` which can be used to change all box shadows at once
 More variables can be implemented to make the code clean and easy to read
 Overflow x is hidden to prevent having to scroll sideways
 A mixture of grid and flex displays as well as subgrids.
