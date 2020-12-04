@@ -96,4 +96,7 @@ Has dynamic functions that take in input usually as ‘number’ or ‘room’ i
 ## Miscellaneous
 `mode2 -m -d /dev/lirc1` is the command to check if IR is being received on Raspberry Pi
 `irsend SEND_ONCE MITSUBISHI OFF` is the format to send IR signals on the Raspberry Pi
+
+![Boot Config](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/BootConfig.JPG?raw=true)
+
 To send multiple aircon signals the `sudo nano /boot/config.txt` file may need to be adapted (and other such files) in order to specialise where the IR signal for each room is being sent and which pin it is directed to.
