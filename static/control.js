@@ -1,4 +1,4 @@
-const numRoom = 3;
+const numRoom = 5;
 let curRoom = 1;
 
 const setRoom = (roomX) => {

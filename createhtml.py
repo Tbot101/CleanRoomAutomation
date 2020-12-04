@@ -52,14 +52,14 @@ for i in range(1,6):
         {% if roomCHANGENUMBERlight == 1 %}
         <img src="/static/images/lighton.png" class="utility">
         <div class="onoff">
-          <a href="/roomCHANGENUMBERlight/on"class="button light_on_button_on">ON</a>
-          <a href="/roomCHANGENUMBERlight/off" class="button light_off_button_off">OFF</a>
+          <a href="/roomCHANGENUMBERlight/on"class="button on_button_on">ON</a>
+          <a href="/roomCHANGENUMBERlight/off" class="button off_button_off">OFF</a>
         </div>
         {% else %}
         <img src="/static/images/lightoff.png" class="utility">
         <div class="onoff">
-          <a href="/roomCHANGENUMBERlight/on" class="button light_on_button_off">ON</a>
-          <a href="/roomCHANGENUMBERlight/off" class="button light_off_button_on">OFF</a>
+          <a href="/roomCHANGENUMBERlight/on" class="button on_button_off">ON</a>
+          <a href="/roomCHANGENUMBERlight/off" class="button off_button_on">OFF</a>
         </div>
         {% endif %}
         <div class="roomnumber">ROOM CHANGENUMBER</div>
@@ -70,8 +70,8 @@ for i in range(1,6):
           {% if roomCHANGENUMBERfan == 1 %}
           <img src="/static/images/fanon.png" class="utility">
           <div class="onoff">
-            <a href="/roomCHANGENUMBERfan/on" class="button fan_on_button_on">ON</a>
-            <a href="/roomCHANGENUMBERfan/off" class="button fan_off_button_off">OFF</a>
+            <a href="/roomCHANGENUMBERfan/on" class="button on_button_on">ON</a>
+            <a href="/roomCHANGENUMBERfan/off" class="button off_button_off">OFF</a>
           </div>
           <div>
             <form method="POST" action="/fanslider/roomCHANGENUMBER" id="roomCHANGENUMBERfanform" class="slidecontainer" onsubmit="setroomValue(CHANGENUMBER)">
@@ -83,8 +83,8 @@ for i in range(1,6):
           {% else %}
           <img src="/static/images/fanoff.png" class="utility">
           <div class="onoff">
-            <a href="/roomCHANGENUMBERfan/on" class="button fan_on_button_off">ON</a>
-            <a href="/roomCHANGENUMBERfan/off" class="button fan_off_button_on">OFF</a>
+            <a href="/roomCHANGENUMBERfan/on" class="button on_button_off">ON</a>
+            <a href="/roomCHANGENUMBERfan/off" class="button off_button_on">OFF</a>
           </div>
           {% endif %}
         </div>
@@ -94,8 +94,8 @@ for i in range(1,6):
          {% if roomCHANGENUMBERaircon == 1 %}
          <img src="/static/images/airconon.png" class="utility">
          <div class="onoff">
-            <a href="/roomCHANGENUMBERaircon/on" class="button aircon_on_button_on">ON</a>
-            <a href="/roomCHANGENUMBERaircon/off" class="button aircon_off_button_off" onclick="airconoff(CHANGENUMBER)">OFF</a>
+            <a href="/roomCHANGENUMBERaircon/on" class="button on_button_on">ON</a>
+            <a href="/roomCHANGENUMBERaircon/off" class="button off_button_off" onclick="airconoff(CHANGENUMBER)">OFF</a>
           </div>
           <div class="airconstats">
             <div class="settemp" id="settempwrapperCHANGENUMBER">
@@ -106,14 +106,10 @@ for i in range(1,6):
                 <input type="image" src="/static/images/decrease.png" onclick="airConEdit(CHANGENUMBER, -1); settempvalue(CHANGENUMBER); getairconsignal(CHANGENUMBER); " class="qty-minus settempbutton">
             </div>
             <div class="fanspeed">
-                <div>
                     <p class="fanspeedheader">FAN SPEED</p>
                     <input type="image" src="/static/images/fanlow.png" class="fanspeedimage" id="fanspeedimageroomCHANGENUMBER">
-                </div>
-                <div class="fanspeedbuttonwrapper">
-                    <input type="image" src="/static/images/increase.png" class="fanspeedbutton" onclick="fanhigh(CHANGENUMBER); setfanvalue(CHANGENUMBER); getairconsignal(CHANGENUMBER)">
-                    <input type="image" src="/static/images/decrease.png" class="fanspeedbutton" onclick="fanlow(CHANGENUMBER); setfanvalue(CHANGENUMBER); getairconsignal(CHANGENUMBER)">
-                </div>
+                    <input type="image" src="/static/images/increase.png" class="fanspeedbuttonhigh" onclick="fanhigh(CHANGENUMBER); setfanvalue(CHANGENUMBER); getairconsignal(CHANGENUMBER)">
+                    <input type="image" src="/static/images/decrease.png" class="fanspeedbuttonlow" onclick="fanlow(CHANGENUMBER); setfanvalue(CHANGENUMBER); getairconsignal(CHANGENUMBER)">
             </div>
             <div class="airconmodebuttonwrapper">
               <p class="airconmodeheader">Mode</p>
@@ -127,8 +123,8 @@ for i in range(1,6):
           {% else %}
           <img src="/static/images/airconoff.png" class="utility">
           <div class="onoff">
-              <a href="/roomCHANGENUMBERaircon/on" class="button aircon_on_button_off">ON</a>
-              <a href="/roomCHANGENUMBERaircon/off" class="button aircon_off_button_on" onclick="airconoff(CHANGENUMBER)">OFF</a>
+              <a href="/roomCHANGENUMBERaircon/on" class="button on_button_off">ON</a>
+              <a href="/roomCHANGENUMBERaircon/off" class="button off_button_on" onclick="airconoff(CHANGENUMBER)">OFF</a>
           </div>
           {% endif %}
       </div>

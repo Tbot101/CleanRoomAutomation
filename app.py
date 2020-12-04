@@ -49,6 +49,32 @@ roomPins = {
         'pin': 21,
         'status': 0,
     },
+    'room4light': {
+        'pin': 1,
+        'status': 0,
+    },
+    'room4fan': {
+        'pin': 7,
+        'status': 0,
+        'pwm': 0,
+    },
+    'room4aircon': {
+        'pin': 8,
+        'status': 0,
+    },
+    'room5light': {
+        'pin': 25,
+        'status': 0,
+    },
+    'room5fan': {
+        'pin': 16,
+        'status': 0,
+        'pwm': 0,
+    },
+    'room5aircon': {
+        'pin': 17,
+        'status': 0,
+    },
 }
 
 for v in roomPins.values():
