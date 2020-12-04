@@ -88,3 +88,11 @@ Houses all the styling rules of the dashboard/GUI. There is one variable called 
 
 ## Javascript control.js
 Has dynamic functions that take in input usually as ‘number’ or ‘room’ in order to manipulate DOM elements. Uses local storage extensively in order to save the latest user inputs in terms of fan pwm, aircon settings so that when the page is refreshed or if the app goes to another url endpoint the same information is still displayed. Uses cookies to swap out which room is being displayed. Furthermore, the information state for each aircon setting is saved in `condVal`. `condVal` is used to send information to the python front end in order to send IR signals.
+
+### Potential Future Problems
+1) Multiple instances of the same window being opened. This may confuse the Raspberry Pi as there is no centralized backend (controls to the Raspberry Pi are done from the frontend). Implement the changes on Python `app.py` using the `GET` method to make it more robust.
+2) This may also require the program to regularly autoupdate and change the frontend to reflect values from the backend
+
+### Miscellaneous
+`mode2 -m -d /dev/lirc1` is the command to check if IR is being received on Raspberry Pi
+`irsend SEND_ONCE MITSUBISHI OFF` is the format to send IR signals on the Raspberry Pi
