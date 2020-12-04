@@ -49,7 +49,7 @@ HTML file main.html is stored under the templates folder. The images used in the
 ### Javascript:
 ![Control JS](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/ControlJS.JPG?raw=true)
 
-Define number of rooms at the top of the file. The Javascript is dynamic and uses the input for each function to make the relevant changes.
+Do not change the number `numRoom = 3` at the top of the file. 
 
 ### CSS:
 ![Styles.css](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/Styles.JPG?raw=true)
