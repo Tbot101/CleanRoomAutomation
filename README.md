@@ -94,9 +94,9 @@ Has dynamic functions that take in input usually as ‘number’ or ‘room’ i
 2) This may also require the program to regularly autoupdate and change the frontend to reflect values from the backend
 
 ## Miscellaneous
-`mode2 -m -d /dev/lirc1` is the command to check if IR is being received on Raspberry Pi
-`irsend SEND_ONCE MITSUBISHI OFF` is the format to send IR signals on the Raspberry Pi
-`ps -aef | grep python3` to find out where the python is being run and do `sudo kill ...` to kill process
+1) `mode2 -m -d /dev/lirc1` is the command to check if IR is being received on Raspberry Pi
+2) `irsend SEND_ONCE MITSUBISHI OFF` is the format to send IR signals on the Raspberry Pi
+3) `ps -aef | grep python3` to find out where the python is being run and do `sudo kill ...` to kill process
 
 ![Boot Config](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/BootConfig.JPG?raw=true)
 
