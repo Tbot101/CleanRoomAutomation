@@ -96,6 +96,7 @@ Has dynamic functions that take in input usually as ‘number’ or ‘room’ i
 ## Miscellaneous
 `mode2 -m -d /dev/lirc1` is the command to check if IR is being received on Raspberry Pi
 `irsend SEND_ONCE MITSUBISHI OFF` is the format to send IR signals on the Raspberry Pi
+`ps -aef | grep python3` to find out where the python is being run and do `sudo kill ...` to kill process
 
 ![Boot Config](https://github.com/Tbot101/CleanRoomAutomation/blob/main/pictures/BootConfig.JPG?raw=true)
 
